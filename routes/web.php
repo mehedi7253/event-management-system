@@ -35,6 +35,6 @@ Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
 });
 
 //stakeholder
-Route::group(['prefix' => 'stakeholder','middleware' => ['stakeholder', 'auth'], 'namespace'=>'stakeholder'], function (){
+Route::group(['prefix' => 'stakeholder','middleware' => ['stakeholder', 'auth']], function (){
     Route::get('index', [StackController::class, 'index'])->name('stakeholder.index');
 });

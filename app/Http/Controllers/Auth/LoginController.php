@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
 {
@@ -27,7 +27,18 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $maxAttempts = 3;
+    protected $decayMinutes = 1;
+
+    // public function showLoginForm()
+    // {
+    //     if(!session()->has('url.intended'))
+    //     {
+    //         session(['url.intended' => url()->previous()]);
+    //     }
+    //     return view('auth.login');
+    // }
+    
 
     /**
      * Create a new controller instance.
@@ -43,5 +54,10 @@ class LoginController extends Controller
         }elseif (Auth::user()->role_id == 3){
             return route('stakeholder.index');
         }
+    }
+
+    public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
     }
 }
