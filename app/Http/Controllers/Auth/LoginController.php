@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -33,8 +34,14 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    protected function redirectTo()
     {
-        $this->middleware('guest')->except('logout');
+        if (Auth::user()->role_id == 1){
+            return route('admin.index');
+        }elseif (Auth::user()->role_id == 2){
+            return route('user.index');
+        }elseif (Auth::user()->role_id == 3){
+            return route('stakeholder.index');
+        }
     }
 }

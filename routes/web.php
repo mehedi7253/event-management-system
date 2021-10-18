@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Stack\StackController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,14 +24,17 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/admin', function () {
-    return view('admin.index');
+//admin
+Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (){
+    Route::get('index', [AdminController::class, 'index'])->name('admin.index');
 });
 
-Route::get('/user', function () {
-    return view('user.index');
+//user
+Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
+    Route::get('index', [UserController::class, 'index'])->name('user.index');
 });
 
-Route::get('/stakeholder', function () {
-    return view('stakeholder.index');
+//stakeholder
+Route::group(['prefix' => 'stakeholder','middleware' => ['stakeholder', 'auth'], 'namespace'=>'stakeholder'], function (){
+    Route::get('index', [StackController::class, 'index'])->name('stakeholder.index');
 });

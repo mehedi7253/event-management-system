@@ -45,7 +45,7 @@
   </a>
 
   
-
+  @include('template.script')
   @yield('script')
 </body>
 
