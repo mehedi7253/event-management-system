@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Stack\StackController;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //admin
 Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (){
     Route::get('index', [AdminController::class, 'index'])->name('admin.index');
+
+    Route::resource('packages', PackageController::class);
 });
 
 //user
