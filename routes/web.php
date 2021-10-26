@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Stack\StackController;
 use Illuminate\Support\Facades\Route;
@@ -30,6 +32,8 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::get('index', [AdminController::class, 'index'])->name('admin.index');
 
     Route::resource('packages', PackageController::class);
+    Route::resource('categorys', CategoryController::class);
+    Route::resource('sub-categorys', SubcategoryController::class);
 });
 
 //user

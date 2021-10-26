@@ -14,4 +14,8 @@ class package extends Model
     protected $fillable = [
         'package_name', 'price', 'description', 'image', 'status'
     ];
+
+    public function categories(){
+        return $this->hasMany(category::class);
+    }
 }

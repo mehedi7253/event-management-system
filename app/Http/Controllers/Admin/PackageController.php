@@ -99,7 +99,7 @@ class PackageController extends Controller
     {
         $page_name = "Update Package Data";
         $package = package::find($id);
-        return view('admin.packages.edit', compact('package_name', 'package'));
+        return view('admin.packages.edit', compact('page_name', 'package'));
     }
 
     /**
@@ -149,6 +149,9 @@ class PackageController extends Controller
                 $package->image = '';
             }
         }
+
+        $package->save();
+        return redirect()->route('packages.index')->with('success','Paackage Data Update Successful');
     }
 
     /**
