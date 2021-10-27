@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Page\PagePackageController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Stack\StackController;
 use Illuminate\Support\Facades\Route;
@@ -45,3 +46,8 @@ Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
 Route::group(['prefix' => 'stakeholder','middleware' => ['stakeholder', 'auth']], function (){
     Route::get('index', [StackController::class, 'index'])->name('stakeholder.index');
 });
+
+// pages
+
+Route::get('/package/index', [PagePackageController::class, 'index'])->name('pages.package.index');
+Route::get('/package/{name}', [PagePackageController::class, 'show'])->name('pages.package.show');
