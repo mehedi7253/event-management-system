@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
+use App\Models\cart;
 use App\Models\package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -17,11 +18,42 @@ class PagePackageController extends Controller
 
     public function show($name)
     {
-        // $cvservices = package::all();
-        $package = DB::select(DB::raw("SELECT * FROM packages where package_name = '$name'"));
-        // $packages = package::all()->where('package_name','=', '$name');
-      
-        return $package;
-        return view('pages.package.show', compact('package'));
+        $package = DB::table('packages')
+                ->where('package_name','=', $name)
+                ->get();
+        
+        foreach($package as $packages){
+            $package_id = $packages->id;
+        }
+       $main_menu = DB::table('categories')
+                ->where('package_id','=',$package_id)
+                ->get();
+
+        $sub_menu = DB::table('subcategories')
+                ->where('package_id','=', $package_id)
+                ->get();
+
+       return view('pages.package.show', compact('package', 'main_menu','sub_menu'));
+    }
+
+    public function AddToCart(Request $request)
+    {
+        $this->validate($request,[
+            'category_id',
+            'sub_category_id'
+        ]);
+        $invoice = rand(100,1000000);
+
+        foreach ($request->sub_category_id as $i => $package) 
+        {
+            $cart = new cart();
+            $cart->package_id      = $request->package_id;
+            $cart->category_id     = $request->category_id [$i];
+            $cart->sub_category_id = $request->sub_category_id [$i];
+            $cart->invoice_number  = $invoice;
+            $cart->save();
+        }
+       
+        return $cart;
     }
 }

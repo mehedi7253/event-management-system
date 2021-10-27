@@ -26,6 +26,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label>Sub Category Name <sup class="font-weight-bold text-danger">*</sup></label>
+                        <input name="package_id" value="{{ $categories->package_id }}" hidden>
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Enter Sub Category Name" autocomplete="name" autofocus>
                         @error('name')
                         <span class="invalid-feedback" role="alert">

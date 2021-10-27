@@ -5,13 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class subcategory extends Model
+class cart extends Model
 {
     use HasFactory;
     public $timestamps = true;
-    protected $table = 'subcategories';
+    protected $table = 'carts';
     protected $fillable = [
-        'category_id', 'name', 'price','package_id'
+        'package_id', 'category_id', 'sub_category_id','invoice_number'
     ];
-  
 }

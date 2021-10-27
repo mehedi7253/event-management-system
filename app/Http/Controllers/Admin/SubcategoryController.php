@@ -76,7 +76,7 @@ class SubcategoryController extends Controller
     {
         $this->validate($request,[
             'name'  => 'required',
-            'price' => 'required'
+            'price' => 'required',
         ],[
             'name.required'  => 'Please Enter Sub Category Name',
             'price.required' => 'Please Enter Price'
@@ -86,6 +86,7 @@ class SubcategoryController extends Controller
         $sub_category->name        = $request->name;
         $sub_category->price       = $request->price;
         $sub_category->category_id = $id;
+        $sub_category->package_id  = $request->package_id;
         $sub_category->save();
         return back()->with('success','New sub Category Added Successful');
     }

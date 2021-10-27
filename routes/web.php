@@ -51,3 +51,4 @@ Route::group(['prefix' => 'stakeholder','middleware' => ['stakeholder', 'auth']]
 
 Route::get('/package/index', [PagePackageController::class, 'index'])->name('pages.package.index');
 Route::get('/package/{name}', [PagePackageController::class, 'show'])->name('pages.package.show');
+Route::post('package/AddToCart', [PagePackageController::class, 'AddToCart'])->name('pages.package.AddToCart');
