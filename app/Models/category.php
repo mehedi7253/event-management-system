@@ -17,4 +17,8 @@ class category extends Model
     public function packages(){
         return $this->belongsTo(package::class, 'package_id');
     }
+
+    public function subcategory(){
+        return $this->hasMany(subcategory::class, 'category_id');
+    }
 }

@@ -13,5 +13,8 @@ class subcategory extends Model
     protected $fillable = [
         'category_id', 'name', 'price','package_id'
     ];
-  
+
+    public function mainCategory(){
+        return $this->hasMany(category::class);
+    }
 }

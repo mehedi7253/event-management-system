@@ -25,15 +25,16 @@ class PagePackageController extends Controller
         foreach($package as $packages){
             $package_id = $packages->id;
         }
-       $main_menu = DB::table('categories')
+    
+        $main_menu = DB::table('categories')
                 ->where('package_id','=',$package_id)
                 ->get();
 
-        $sub_menu = DB::table('subcategories')
-                ->where('package_id','=', $package_id)
-                ->get();
+        // $sub_menu = DB::table('subcategories')
+        //         ->where('category_id','=', )
+        //         ->get();
 
-       return view('pages.package.show', compact('package', 'main_menu','sub_menu'));
+       return view('pages.package.show', compact('package', 'main_menu'));
     }
 
     public function AddToCart(Request $request)
