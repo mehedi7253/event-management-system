@@ -30,31 +30,26 @@ class PagePackageController extends Controller
                 ->where('package_id','=',$package_id)
                 ->get();
 
-        // $sub_menu = DB::table('subcategories')
-        //         ->where('category_id','=', )
-        //         ->get();
-
        return view('pages.package.show', compact('package', 'main_menu'));
     }
 
     public function AddToCart(Request $request)
     {
         $this->validate($request,[
-            'category_id',
             'sub_category_id'
         ]);
         $invoice = rand(100,1000000);
-
         foreach ($request->sub_category_id as $i => $package) 
         {
             $cart = new cart();
             $cart->package_id      = $request->package_id;
-            $cart->category_id     = $request->category_id [$i];
+            $cart->category_id     = $request->category_id;
             $cart->sub_category_id = $request->sub_category_id [$i];
             $cart->invoice_number  = $invoice;
             $cart->save();
         }
-       
-        return $cart;
+         $cart_id = $cart->id;
+        return redirect()->route('services-packages.edit',[$cart_id]);
+
     }
 }

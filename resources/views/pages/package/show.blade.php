@@ -10,25 +10,25 @@
                     <div class="col-md-4 col-sm-12 float-left border-right">
                         <img src="{{ asset('package/images/'.$packages->image) }}" style="height: 300px; width: 100%" class="img-thumbnail">
                     </div>
-                  
                     @foreach($main_menu as $main_menus)
                         <div class="col-md-4 col-sm-12 float-left">
                             <div class="card">
                                 <div class="card-header">
                                     <h3>{{ $main_menus->category_name }}</h3>
                                 </div>
-                                <form action="{{ route('pages.package.AddToCart') }}" method="POST">
-                                    @csrf
-                                <div class="card-body">
-                                    @php($submenu = DB::select(DB::raw("SELECT * FROM subcategories WHERE category_id = $main_menus->id")))
-                                    
-                                    @foreach($submenu as $sub_menus)
-                                       <input type="checkbox" name="sub_category_id[]" value=""> {{ $sub_menus->name }} <sup class="text-danger"> {{ number_format($sub_menus->price,2) }}T.K</sup> <br/>
-                                    @endforeach
-                                </div>
-                                <div class="card-footer">
-                                     <input type="submit" name="btn" value="Submit" class="btn btn-success col-4">
-                                </form>
+                                    <form action="{{ route('pages.package.AddToCart') }}" method="POST">
+                                        @csrf
+                                    <div class="card-body">
+                                        <input name="package_id" value="{{ $main_menus->id }}" hidden>
+                                        <input name="category_id" value="{{ $packages->id }}" hidden>
+                                        @php($submenu = DB::select(DB::raw("SELECT * FROM subcategories WHERE category_id = $main_menus->id")))
+                                        @foreach($submenu as $sub_menus)
+                                        <input type="checkbox" name="sub_category_id[]" value="{{ $sub_menus->id }}"> {{ $sub_menus->name }} <sup class="text-danger"> {{ number_format($sub_menus->price,2) }}T.K</sup> <br/>
+                                        @endforeach
+                                    </div>
+                                    <div class="card-footer">
+                                        <input type="submit" name="btn" value="Submit" class="btn btn-success col-4">
+                                    </form>
                                 </div>
                             </div>
                         </div>
