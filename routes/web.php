@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Page\OrderController;
 use App\Http\Controllers\Page\PagePackageController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Stack\StackController;
@@ -54,4 +55,4 @@ Route::get('/package/{name}', [PagePackageController::class, 'show'])->name('pag
 Route::post('package/AddToCart', [PagePackageController::class, 'AddToCart'])->name('pages.package.AddToCart');
 
 // order
-Route::get('order/{}');
+Route::resource('orders', OrderController::class);

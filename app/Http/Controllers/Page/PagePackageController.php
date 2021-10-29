@@ -49,7 +49,7 @@ class PagePackageController extends Controller
             $cart->save();
         }
          $cart_id = $cart->id;
-        return redirect()->route('services-packages.edit',[$cart_id]);
+        return redirect()->route('orders.show',[$cart_id]);
 
     }
 }

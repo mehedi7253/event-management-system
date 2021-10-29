@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
+use App\Models\cart;
+use App\Models\orders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -46,7 +49,19 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $page_name = 'My Order Details';
+        $order_list = cart::find($id);
+        $invoice_number = $order_list->invoice_number;
+
+        $order_item = DB::table('carts')
+                ->join('packages', 'packages.id', '=', 'carts.package_id')
+                ->join('categories', 'categories.id', '=', 'carts.category_id')
+                ->join('subcategories', 'subcategories.id', '=', 'carts.sub_category_id')
+                ->where('carts.invoice_number', '=', $invoice_number)
+                ->get();
+        
+        return view('pages.package.cart', compact('page_name','order_item'));
+        
     }
 
     /**
