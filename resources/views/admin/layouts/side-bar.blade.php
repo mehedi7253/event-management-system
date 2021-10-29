@@ -41,4 +41,16 @@
         </div>
       </div>
     </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap3"
+        aria-expanded="true" aria-controls="collapseBootstrap">
+        <i class="far fa-fw fa-window-maximize"></i>
+        <span>Orders</span>
+      </a>
+      <div id="collapseBootstrap3" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="{{ route('neworders.index') }}">New Orders</a>
+        </div>
+      </div>
+    </li>
   </ul>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\NewOrderController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Page\OrderController;
@@ -36,6 +37,7 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('packages', PackageController::class);
     Route::resource('categorys', CategoryController::class);
     Route::resource('sub-categorys', SubcategoryController::class);
+    Route::resource('neworders', NewOrderController::class);
 });
 
 //user

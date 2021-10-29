@@ -30,14 +30,14 @@ class LoginController extends Controller
     protected $maxAttempts = 3;
     protected $decayMinutes = 1;
 
-    // public function showLoginForm()
-    // {
-    //     if(!session()->has('url.intended'))
-    //     {
-    //         session(['url.intended' => url()->previous()]);
-    //     }
-    //     return view('auth.login');
-    // }
+    public function showLoginForm()
+    {
+        if(!session()->has('url.intended'))
+        {
+            session(['url.intended' => url()->previous()]);
+        }
+        return view('auth.login');
+    }
     
 
     /**
@@ -50,7 +50,7 @@ class LoginController extends Controller
         if (Auth::user()->role_id == 1){
             return route('admin.index');
         }elseif (Auth::user()->role_id == 2){
-            return route('user.index');
+            $this->redirectTo = url()->previous();
         }elseif (Auth::user()->role_id == 3){
             return route('stakeholder.index');
         }

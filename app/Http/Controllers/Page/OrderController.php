@@ -38,7 +38,16 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $order = new orders();
+        $order->name           = $request->name;
+        $order->email          = $request->email;
+        $order->phone          = $request->phone;
+        $order->invoice_number = $request->invoice_number;
+        $order->amount         = $request->amount;
+        $order->process        = 0;
+
+        $order->save();
+        return $order;
     }
 
     /**
@@ -59,8 +68,17 @@ class OrderController extends Controller
                 ->join('subcategories', 'subcategories.id', '=', 'carts.sub_category_id')
                 ->where('carts.invoice_number', '=', $invoice_number)
                 ->get();
-        
-        return view('pages.package.cart', compact('page_name','order_item'));
+                
+        $total_price = 0;
+        foreach ($order_item as $order){
+            $package_name   = $order->package_name;
+            $package_price  = $order->price;
+            $main_menu      = $order->name;
+            $total_price   += $order->price;
+           
+        }  
+        // return $total_price;
+        return view('pages.package.cart', compact('page_name','order_item','package_name','main_menu','package_price','total_price','invoice_number'));
         
     }
 
@@ -84,7 +102,7 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**
