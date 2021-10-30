@@ -46,7 +46,7 @@ class StackeholderController extends Controller
             'phone'    => ['required', 'string', 'min:11', 'max:11','regex:/^[-0-9\+]+$/'],
             'gender'   => ['string', 'max:255'],
             'address'  => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:4', 'confirmed'],
+            'password' => ['required', 'string', 'min:4'],
         ],[
             'name.required'      => "please Enter Name",
             'name.regex'         => "Please Enter Only Character Value",
@@ -67,6 +67,8 @@ class StackeholderController extends Controller
         $user->address  = $request->address;
         $user->gender   = $request->gender;
         $user->password = Hash::make($request->password);
+        $user->role_id  = 3;
+        $user->status   = 0;
         $user->save();
         return back()->with('success','New StakeHolder Added Successful');
 
@@ -80,7 +82,9 @@ class StackeholderController extends Controller
      */
     public function show($id)
     {
-        //
+        $page_name = " Stacke Holders Profile";
+        $profile = User::find($id);
+        return view('admin.stackeholder.show', compact('page_name','profile'));
     }
 
     /**

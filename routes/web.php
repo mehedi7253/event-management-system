@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\StackeholderController;
 use App\Http\Controllers\Admin\NewOrderController;
 use App\Http\Controllers\Admin\PackageController;
-use App\Http\Controllers\Admin\StackeholderController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Page\OrderController;
 use App\Http\Controllers\Page\PagePackageController;
@@ -39,7 +39,8 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('categorys', CategoryController::class);
     Route::resource('sub-categorys', SubcategoryController::class);
     Route::resource('neworders', NewOrderController::class);
-    Route::resource('stackeholders', StackeholderController::class);
+    Route::resource('admin-stackholder', StackeholderController::class);
+});
 //user
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
     Route::get('index', [UserController::class, 'index'])->name('user.index');
