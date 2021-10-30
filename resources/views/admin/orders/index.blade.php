@@ -41,8 +41,21 @@
                           <td>{{ $order->phone }}</td>
                           <td>{{ $order->email }}</td>
                           <td>{{ $order->invoice_number }}</td>
-                          <td>{{ $order->process }}</td>
-                          <td></td>
+                          <td>
+                              @if($order->process == '0')
+                                  <label class="text-danger">Pending</label>
+                                @elseif($order->process == '2')
+                                  <label class="text-info">Assigned Stackholder</label>
+                                @elseif($order->process == '3')
+                                  <label class="text-success">Complete</label>
+                                @else
+                                 <label class="text-danger">Failed</label>\
+                              @endif
+                          </td>
+                          <td>
+                              <a href="" class="btn btn-info"><i class="fa fa-plus"></i></a>
+                              <a href="{{ route('neworders.show', $order->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                          </td>
                       </tr>
                   @endforeach
               </tbody>

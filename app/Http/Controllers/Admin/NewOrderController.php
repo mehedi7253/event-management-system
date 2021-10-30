@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\orders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NewOrderController extends Controller
 {
@@ -50,7 +51,27 @@ class NewOrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $page_name = "Order Details";
+        $orders    = orders::find($id);
+        $invoice_number = $orders->invoice_number;
+
+        $order_item = DB::table('orders')
+                    ->join('carts','carts.invoice_number', '=', 'orders.invoice_number')
+                    ->join('packages','packages.id', '=', 'carts.package_id')
+                    ->join('categories', 'categories.id', '=', 'carts.category_id')
+                    ->join('subcategories', 'subcategories.id', 'carts.sub_category_id')
+                    ->where('orders.invoice_number','=', $invoice_number)
+                    ->get();
+
+         $total_price = 0;
+        foreach ($order_item as $order){
+            $package_name   = $order->package_name;
+            $package_price  = $order->price;
+            $main_menu      = $order->name;
+            $total_price   += $order->price;
+        }  
+       
+        return view('admin.orders.invoice', compact('page_name','order_item','orders', 'package_name', 'total_price', 'main_menu'));
     }
 
     /**
