@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AssignStakeholderControleerr;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\StackeholderController;
 use App\Http\Controllers\Admin\NewOrderController;
 use App\Http\Controllers\Admin\PackageController;
@@ -10,6 +12,7 @@ use App\Http\Controllers\Page\OrderController;
 use App\Http\Controllers\Page\PagePackageController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Stack\StackController;
+use App\Http\Controllers\Stack\ViewOrderController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +43,8 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('sub-categorys', SubcategoryController::class);
     Route::resource('neworders', NewOrderController::class);
     Route::resource('admin-stackholder', StackeholderController::class);
+    Route::resource('assignstakeholders', AssignStakeholderControleerr::class);
+    Route::resource('events', EventController::class);
 });
 //user
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
@@ -49,6 +54,8 @@ Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
 //stakeholder
 Route::group(['prefix' => 'stakeholder','middleware' => ['stakeholder', 'auth']], function (){
     Route::get('index', [StackController::class, 'index'])->name('stakeholder.index');
+
+    Route::resource('new-orders', ViewOrderController::class);
 });
 
 // pages

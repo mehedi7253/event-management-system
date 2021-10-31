@@ -18,6 +18,7 @@ class CreateAssignstackholdersTable extends Migration
             $table->bigInteger('order_id')->unsigned();
             $table->bigInteger('stackholder_id')->unsigned();
             $table->string('process');
+            $table->string('comission');
             $table->foreign('order_id')->references('id')->on('orders')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('stackholder_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();

@@ -20,7 +20,33 @@
             <h6>{{ $page_name }} <a href="{{ route('categorys.index') }}" class="float-right btn btn-info">Manage Category</a></h6>
         </div> 
        <div class="card-body">
-        
+        <div class="table-responsive p-3">
+            <table class="table align-items-center table-flush table-hover table-bordered" id="dataTableHover">
+              <thead class="thead-light">
+                <tr>
+                  <th> Name</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Image</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                  @foreach ($stakeholders as $stakeholder)
+                  <tr>
+                      <td>{{ $stakeholder->name }}</td>
+                      <td>{{ $stakeholder->email }}</td>
+                      <td>{{ $stakeholder->phone }} </td>
+                     <td>
+                     </td>
+                      <td> 
+                          <a class="btn btn-info" href="{{ route('admin-stackholder.show', $stakeholder->id) }}" ><i class="fa fa-eye"></i></a>
+                      </td>
+                  </tr>
+                  @endforeach
+              </tbody>
+            </table>
+          </div>
        </div>
     </div>
 @endsection

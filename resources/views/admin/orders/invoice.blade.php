@@ -34,8 +34,10 @@
            <div class="col-md-6 col-sm-12 float-left text-right">
                 @if($orders->process == '0')
                     <label class="text-danger">Pending</label>
-                @elseif($orders->process == '1')
-                    <label class="text-info">Not Assigned</label>
+                @elseif($orders->process == '2')
+                    @foreach ($stake_holder as $stake_holders)
+                     <a href="{{ route('admin-stackholder.show', $stake_holders->id) }}" class="text-decoration-none">{{ $stake_holders->name }}</a>
+                    @endforeach
                 @elseif($orders->process == '3')
                     <label class="text-success">Complete</label>
                 @endif

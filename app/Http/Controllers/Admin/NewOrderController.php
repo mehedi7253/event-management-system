@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\assignstackholder;
 use App\Models\orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -71,7 +72,12 @@ class NewOrderController extends Controller
             $total_price   += $order->price;
         }  
        
-        return view('admin.orders.invoice', compact('page_name','order_item','orders', 'package_name', 'total_price', 'main_menu'));
+       $stake_holder = DB::table('assignstackholders')
+                ->join('orders','orders.id', '=', 'assignstackholders.order_id')
+                ->join('users','users.id', '=', 'assignstackholders.stackholder_id')
+                ->where('assignstackholders.order_id','=', $orders->id)
+                ->get();
+        return view('admin.orders.invoice', compact('page_name','order_item','orders', 'package_name', 'total_price', 'main_menu','stake_holder'));
     }
 
     /**
@@ -82,7 +88,7 @@ class NewOrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -94,7 +100,15 @@ class NewOrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'process' => 'required'
+        ]);
+
+        $update_process = orders::find($id);
+        $update_process->process = $request->process;
+
+        $update_process->save();
+        return back()->with('message','Update Successful');
     }
 
     /**

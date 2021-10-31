@@ -45,7 +45,14 @@
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap3"
         aria-expanded="true" aria-controls="collapseBootstrap">
         <i class="far fa-fw fa-window-maximize"></i>
-        <span>Orders</span>
+        <span>Orders  
+          <sup class="font-weight-bold text-danger">
+          @php
+              $notification = DB::table('orders')->where('process','=','0')->count();
+              echo $notification;
+          @endphp
+        </sup>
+     </span>
       </a>
       <div id="collapseBootstrap3" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
@@ -63,6 +70,19 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{ route('admin-stackholder.index') }}">Manage Stakeholder</a>
           <a class="collapse-item" href="{{ route('admin-stackholder.create') }}">Add New Stakeholder</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap5"
+        aria-expanded="true" aria-controls="collapseBootstrap">
+        <i class="far fa-fw fa-window-maximize"></i>
+        <span>Event</span>
+      </a>
+      <div id="collapseBootstrap5" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="{{ route('events.index') }}">Manage Event</a>
+          <a class="collapse-item" href="{{ route('events.create') }}">Add New Event</a>
         </div>
       </div>
     </li>
