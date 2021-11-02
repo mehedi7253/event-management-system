@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminchatController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AssignStakeholderControleerr;
 use App\Http\Controllers\Admin\CategoryController;
@@ -45,6 +46,7 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('admin-stackholder', StackeholderController::class);
     Route::resource('assignstakeholders', AssignStakeholderControleerr::class);
     Route::resource('events', EventController::class);
+    Route::resource('admin-chat', AdminchatController::class);
 });
 //user
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
