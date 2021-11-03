@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\StackeholderController;
 use App\Http\Controllers\Admin\NewOrderController;
 use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\StakholderPaymentController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Page\OrderController;
 use App\Http\Controllers\Page\PagePackageController;
@@ -48,6 +49,7 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('assignstakeholders', AssignStakeholderControleerr::class);
     Route::resource('events', EventController::class);
     Route::resource('admin-chat', AdminchatController::class);
+    Route::resource('stackeholder-payments', StakholderPaymentController::class);
 });
 //user
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
