@@ -11,6 +11,6 @@ class chat extends Model
     public $timestamps = true;
     protected $table = 'chats';
     protected $fillable = [
-        'sender_id', 'rechiver_id', 'message'
+        'sender_id', 'rechiver_id', 'message','status'
     ];
 }

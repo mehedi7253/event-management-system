@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\stack;
 
 use App\Http\Controllers\Controller;
+use App\Models\chat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class StackchatController extends Controller
 {
@@ -14,7 +17,9 @@ class StackchatController extends Controller
      */
     public function index()
     {
-        //
+        $page_name = "Chat With Admin";
+        $msgs = chat::all();
+        return view('stakeholder.chat.index', compact('page_name','msgs'));
     }
 
     /**
@@ -35,7 +40,20 @@ class StackchatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'message'   => 'required'
+        ],[
+            'message.required' => 'Message Not Empty'
+        ]);
+        
+        $msg = new chat();
+        $msg->sender_id   = Auth::user()->id;
+        $msg->rechiver_id = 1;
+        $msg->message     = $request->message;
+        $msg->status      = 0;
+
+        $msg->save();
+        return back();
     }
 
     /**

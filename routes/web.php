@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Page\OrderController;
 use App\Http\Controllers\Page\PagePackageController;
+use App\Http\Controllers\stack\StackchatController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Stack\StackController;
 use App\Http\Controllers\Stack\ViewOrderController;
@@ -58,6 +59,7 @@ Route::group(['prefix' => 'stakeholder','middleware' => ['stakeholder', 'auth']]
     Route::get('index', [StackController::class, 'index'])->name('stakeholder.index');
 
     Route::resource('new-orders', ViewOrderController::class);
+    Route::resource('stack-chat', StackchatController::class);
 });
 
 // pages

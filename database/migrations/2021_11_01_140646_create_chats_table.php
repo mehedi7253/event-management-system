@@ -18,6 +18,7 @@ class CreateChatsTable extends Migration
             $table->bigInteger('sender_id');
             $table->bigInteger('rechiver_id');
             $table->longText('message');
+            $table->bigInteger('status');
             $table->timestamps();
         });
     }
