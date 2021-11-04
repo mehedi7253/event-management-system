@@ -37,24 +37,30 @@
                     <table class="table table-bordered table-striped">
                         <tr>
                             <th>Package</th>
-                            <td>{{ $package_name }}</td>
+                            <td>
+                                @foreach ($package as $packages)
+                                   {{ $packages->package_name }}        
+                                @endforeach
+                            </td>
                             <td>Price</td>
                         </tr>
                         <tr>
                             <th>Main Menu</th>
-                            <td>{{ $main_menu }}</td>
-                            <td>{{ $main_menu_price }}</td>
+                            @foreach ($main_cat as $main_menu)
+                                <td>{{ $main_menu->category_name }}</td>
+                                <td>{{ number_format($main_menu->price,2) }}</td>                                
+                            @endforeach
                         </tr>
                         <tr>
                             <th>Sub Menu</th>
                             <td>
-                                @foreach ($order_item as $order_items)
-                                    {{ $order_items->name }}<br/>
+                                @foreach ($sub_cat as $sub_menu)
+                                   <li> {{ $sub_menu->name }}</li>
                                 @endforeach
                             </td>
                             <td>
-                                @foreach ($order_item as $order_items)
-                                    {{ number_format($order_items->price,2) }}<br/>
+                                @foreach ($sub_cat as $sub_menu_price)
+                                    {{ number_format($sub_menu_price->price,2) }}<br/>
                                 @endforeach
                             </td>
                         </tr>

@@ -62,35 +62,29 @@ class OrderController extends Controller
         $page_name = 'My Order Details';
         $order_list = cart::find($id);
         $invoice_number = $order_list->invoice_number;
+        $package = DB::select(DB::raw("SELECT carts.package_id, carts.invoice_number, packages.id, packages.package_name FROM carts, packages WHERE carts.invoice_number = $invoice_number GROUP By carts.package_id"));
 
-        $order = DB::table('carts')
-            ->join('categories', 'categories.id', '=', 'carts.category_id')
-            ->join('subcategories', 'subcategories.id', '=', 'carts.sub_category_id')
-            ->where('carts.invoice_number','=', $invoice_number)
-            ->get();
+        $sub_cat = DB::table('carts')
+                ->join('subcategories', 'subcategories.id', '=', 'carts.sub_category_id')
+                ->where('carts.invoice_number','=', $invoice_number)
+                ->get();
 
+        $main_cat = DB::table('carts')
+                ->join('categories', 'categories.id', '=', 'carts.category_id')
+                ->where('carts.invoice_number','=', $invoice_number)
+                ->groupBy('carts.category_id')
+                ->get();
+      
+        foreach ($main_cat as $main_price){
+           $main_cat_price = $main_price->price;
+        } 
 
-
-        // $order_item = DB::table('carts')
-        //         ->join('packages', 'packages.id', '=', 'carts.package_id')
-        //         ->join('categories', 'categories.id', '=', 'carts.category_id')
-        //         ->join('subcategories', 'subcategories.id', '=', 'carts.sub_category_id')
-        //         ->where('carts.invoice_number', '=', $invoice_number)
-        //         ->get();
-                
-        // $order_item = DB::select(DB::raw("SELECT * FROM carts, packages, categories, subcategories WHERE carts.package_id = packages.id AND carts.category_id = categories.id AND carts.sub_category_id = subcategories.id AND carts.invoice_number = $order_list->invoice_number"));
-        // $total_price = 0;
-        // foreach ($order_item as $order){
-        //     $package_name    = $order->package_name;
-        //     $package_price   = $order->price;
-        //     $main_menu       = $order->name;
-        //     $main_menu_price = $order->price;
-        //     $total_price    += $order->price;
-           
-        // }  
-        return $order;
-        return view('pages.package.cart', compact('page_name','order_item','package_name','main_menu','main_menu_price','package_price','total_price','invoice_number'));
+        $total_price = $main_cat_price;
+        foreach ($sub_cat as $order){
+            $total_price    += $order->price;
+        } 
         
+        return view('pages.package.cart', compact('page_name','package','sub_cat','main_cat','total_price','invoice_number','main_cat_price'));        
     }
 
     /**
