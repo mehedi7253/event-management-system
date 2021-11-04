@@ -24,13 +24,8 @@
             @csrf
             @method('PUT')
             <div class="form-group col-sm-12 col-md-6 float-left">
-                <label>Select Package <sup class="font-weight-bold text-danger">*</sup></label>
-                <select class="form-control" name="package_id">
-                    <option>-------Select One--------</option>
-                    @foreach ($package as $packages)
-                        <option value="{{ $packages->id }}">{{ $packages->package_name }}</option>
-                    @endforeach
-                </select>
+                <label> Package Name <sup class="font-weight-bold text-danger">*</sup></label>
+               <input value="{{ $category->packages->package_name }}" class="form-control" disabled>
             </div>
             <div class="form-group col-sm-12 col-md-6 float-left">
                 <label>Category Name <sup class="font-weight-bold text-danger">*</sup></label>
@@ -41,7 +36,24 @@
                  </span>
                 @enderror
             </div>
-
+            <div class="form-group col-sm-12 col-md-6 float-left">
+                <label>Price<sup class="font-weight-bold text-danger">*</sup></label>
+                <input id="price" type="number" min="1" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $category->price }}" placeholder="Enter Category price" autocomplete="price" autofocus>
+                @error('price')
+                <span class="invalid-feedback" role="alert">
+                     <label style="color: red">{{ $message }}</label>
+                 </span>
+                @enderror
+            </div>
+            <div class="form-group col-md-12 col-sm-12 float-left">
+                <label>Description <sup class="font-weight-bold text-danger">*</sup></label>
+                <textarea class="form-control @error('description') is-invalid @enderror"  id="application" name="description">{{ $category->description }}</textarea>
+                @error('description')
+                <span class="invalid-feedback" role="alert">
+                     <label style="color: red">{{ $message }}</label>
+                 </span>
+                @enderror
+            </div>
             <div class="form-group col-md-6 col-sm-12 float-left">
                 <input type="submit" name="submit" class="btn btn-success" value="Submit">
             </div>

@@ -38,12 +38,12 @@
                         <tr>
                             <th>Package</th>
                             <td>{{ $package_name }}</td>
-                            <td>{{ $package_price }}</td>
+                            <td>Price</td>
                         </tr>
                         <tr>
                             <th>Main Menu</th>
                             <td>{{ $main_menu }}</td>
-                            <td></td>
+                            <td>{{ $main_menu_price }}</td>
                         </tr>
                         <tr>
                             <th>Sub Menu</th>

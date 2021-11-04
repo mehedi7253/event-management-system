@@ -48,7 +48,7 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         if (Auth::user()->role_id == 1){
-            return route('admin.index');
+         $this->redirectTo = url()->previous();
         }elseif (Auth::user()->role_id == 2){
             $this->redirectTo = url()->previous();
         }elseif (Auth::user()->role_id == 3){

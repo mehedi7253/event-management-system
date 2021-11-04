@@ -33,15 +33,7 @@
                      </span>
                     @enderror
                 </div>
-                <div class="form-group col-md-6 col-sm-12 float-left">
-                    <label>Package Price <sup class="text-danger font-weight-bold">*</sup></label>
-                    <input id="price" type="number" min="1" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" placeholder="Enter Package Price" autocomplete="price" autofocus>
-                    @error('price')
-                    <span class="invalid-feedback" role="alert">
-                         <label style="color: red">{{ $message }}</label>
-                     </span>
-                    @enderror
-                </div>
+                
                 <div class="form-group col-md-6 col-sm-12 float-left">
                     <label>Package Image <sup class="text-danger font-weight-bold">*</sup></label>
                     <input id="image" type="file"  class="form-control @error('image') is-invalid @enderror" name="image">
@@ -61,17 +53,9 @@
                      </span>
                     @enderror
                 </div>
-                <div class="form-group col-md-12 col-sm-12 float-left">
-                    <label>Description <sup class="text-danger font-weight-bold">*</sup></label><br/>
-                   <textarea name="description" class="form-control" id="application"></textarea>
-                    @error('description')
-                    <span class="invalid-feedback" role="alert">
-                         <label style="color: red">{{ $message }}</label>
-                     </span>
-                    @enderror
-                </div>
-                <div class="form-group col-md-6 col-sm-12 float-left">
-                    <input type="submit" name="submit" class="btn btn-success" value="Submit">
+            
+                <div class="form-group col-md-6 col-sm-12 float-left mt-4">
+                    <input type="submit" name="submit" class="btn btn-success btn-block" value="Submit">
                 </div>
             </form>
          </div>

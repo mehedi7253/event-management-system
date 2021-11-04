@@ -41,16 +41,11 @@ class PackageController extends Controller
     {
         $this->validate($request, [
             'package_name' => 'required | regex:/^[a-zA-Z-.\s]+$/',
-            'price'        => 'required | regex:/^[-0-9\+]+$/',
-            'description'  => 'required',
             'image'        => 'required | mimes:jpg,png,jpeg|max:7048',
             'status'       => 'required'
         ],[
             'package_name.required'  => "please Enter Package Name",
             'package_name.regex'     => "Please Enter Only Character Value",
-            'price.required'         => "please Enter Price",
-            'price.regex'            => "Please Enter Only Numaric Value",
-            'description.required'   => "Please Enter Description",
             'image.required'         => 'Please Select An Image',
             'image.mimes'            => 'Please Select Jpg,png,jpeg Type',
             'image.max'              => 'Please Select Image Less Then 8 Mb',
@@ -59,8 +54,6 @@ class PackageController extends Controller
 
         $package = new package();
         $package->package_name  = $request->package_name;
-        $package->price         = $request->price;
-        $package->description   = $request->description;
         $package->status        = $request->status;
 
         if ($request->hasFile('image')) {
@@ -113,16 +106,11 @@ class PackageController extends Controller
     {
         $this->validate($request, [
             'package_name' => 'required | regex:/^[a-zA-Z-.\s]+$/',
-            'price'        => 'required | regex:/^[-0-9\+]+$/',
-            'description'  => 'required',
             'image'        => 'mimes:jpg,png,jpeg|max:7048',
             'status'       => 'required'
         ],[
             'package_name.required'  => "please Enter Package Name",
             'package_name.regex'     => "Please Enter Only Character Value",
-            'price.required'         => "please Enter Price",
-            'price.regex'            => "Please Enter Only Numaric Value",
-            'description.required'   => "Please Enter Description",
             'image.mimes'            => 'Please Select Jpg,png,jpeg Type',
             'image.max'              => 'Please Select Image Less Then 8 Mb',
             'status.required'        => 'Please Select One'
@@ -130,8 +118,6 @@ class PackageController extends Controller
 
         $package = package::find($id);
         $package->package_name  = $request->package_name;
-        $package->price         = $request->price;
-        $package->description   = $request->description;
         $package->status        = $request->status;
 
         if($request->image == ''){

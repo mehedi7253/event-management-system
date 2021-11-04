@@ -49,6 +49,15 @@
                  </span>
                 @enderror
             </div>
+            <div class="form-group col-md-12 col-sm-12 float-left">
+                <label>Description <sup class="font-weight-bold text-danger">*</sup></label>
+                <textarea class="form-control @error('description') is-invalid @enderror"  id="application" name="description"></textarea>
+                @error('description')
+                <span class="invalid-feedback" role="alert">
+                     <label style="color: red">{{ $message }}</label>
+                 </span>
+                @enderror
+            </div>
             <div class="form-group col-md-6 col-sm-12 float-left">
                 <label></label>
                 <input type="submit" name="submit" class="btn btn-success btn-block mt-2" value="Submit">

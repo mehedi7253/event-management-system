@@ -12,7 +12,7 @@ class package extends Model
     public $timestamps = true;
     protected $table = 'packages';
     protected $fillable = [
-        'package_name', 'price', 'description', 'image', 'status'
+        'package_name', 'image', 'status'
     ];
 
     public function categories(){

@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->bigInteger('package_id')->unsigned();
             $table->string('category_name');
             $table->float('price', '10','2');
+            $table->longText('description');
             $table->foreign('package_id')->references('id')->on('packages')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

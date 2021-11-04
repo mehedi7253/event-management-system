@@ -11,7 +11,7 @@ class category extends Model
     public $timestamps = true;
     protected $table = 'categories';
     protected $fillable = [
-        'package_id', 'category_name', 'price'
+        'package_id', 'category_name', 'price','description'
     ];
 
     public function packages(){

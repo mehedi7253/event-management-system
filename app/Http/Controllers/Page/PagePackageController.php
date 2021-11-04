@@ -39,15 +39,25 @@ class PagePackageController extends Controller
             'sub_category_id'
         ]);
         $invoice = rand(100,1000000);
-        foreach ($request->sub_category_id as $i => $package) 
+        if($request->sub_category_id == '')
         {
             $cart = new cart();
             $cart->package_id      = $request->package_id;
             $cart->category_id     = $request->category_id;
-            $cart->sub_category_id = $request->sub_category_id [$i];
             $cart->invoice_number  = $invoice;
             $cart->save();
+        }else{
+            foreach ($request->sub_category_id as $i => $package) 
+            {
+                $cart = new cart();
+                $cart->package_id      = $request->package_id;
+                $cart->category_id     = $request->category_id;
+                $cart->sub_category_id = $request->sub_category_id [$i];
+                $cart->invoice_number  = $invoice;
+                $cart->save();
+            }
         }
+        
          $cart_id = $cart->id;
         return redirect()->route('orders.show',[$cart_id]);
 

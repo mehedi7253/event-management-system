@@ -63,23 +63,33 @@ class OrderController extends Controller
         $order_list = cart::find($id);
         $invoice_number = $order_list->invoice_number;
 
-        $order_item = DB::table('carts')
-                ->join('packages', 'packages.id', '=', 'carts.package_id')
-                ->join('categories', 'categories.id', '=', 'carts.category_id')
-                ->join('subcategories', 'subcategories.id', '=', 'carts.sub_category_id')
-                ->where('carts.invoice_number', '=', $invoice_number)
-                ->get();
+        $order = DB::table('carts')
+            ->join('categories', 'categories.id', '=', 'carts.category_id')
+            ->join('subcategories', 'subcategories.id', '=', 'carts.sub_category_id')
+            ->where('carts.invoice_number','=', $invoice_number)
+            ->get();
+
+
+
+        // $order_item = DB::table('carts')
+        //         ->join('packages', 'packages.id', '=', 'carts.package_id')
+        //         ->join('categories', 'categories.id', '=', 'carts.category_id')
+        //         ->join('subcategories', 'subcategories.id', '=', 'carts.sub_category_id')
+        //         ->where('carts.invoice_number', '=', $invoice_number)
+        //         ->get();
                 
-        $total_price = 0;
-        foreach ($order_item as $order){
-            $package_name   = $order->package_name;
-            $package_price  = $order->price;
-            $main_menu      = $order->name;
-            $total_price   += $order->price;
+        // $order_item = DB::select(DB::raw("SELECT * FROM carts, packages, categories, subcategories WHERE carts.package_id = packages.id AND carts.category_id = categories.id AND carts.sub_category_id = subcategories.id AND carts.invoice_number = $order_list->invoice_number"));
+        // $total_price = 0;
+        // foreach ($order_item as $order){
+        //     $package_name    = $order->package_name;
+        //     $package_price   = $order->price;
+        //     $main_menu       = $order->name;
+        //     $main_menu_price = $order->price;
+        //     $total_price    += $order->price;
            
-        }  
-        // return $total_price;
-        return view('pages.package.cart', compact('page_name','order_item','package_name','main_menu','package_price','total_price','invoice_number'));
+        // }  
+        return $order;
+        return view('pages.package.cart', compact('page_name','order_item','package_name','main_menu','main_menu_price','package_price','total_price','invoice_number'));
         
     }
 

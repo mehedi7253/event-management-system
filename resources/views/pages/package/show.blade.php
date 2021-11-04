@@ -11,10 +11,15 @@
                         <img src="{{ asset('package/images/'.$packages->image) }}" style="height: 300px; width: 100%" class="img-thumbnail">
                     </div>
                     @foreach($main_menu as $main_menus)
-                        <div class="col-md-4 col-sm-12 float-left">
+                        <div class="col-md-4 col-sm-12 float-left mb-2">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3>{{ $main_menus->category_name }}</h3>
+                                    <h3>{{ $main_menus->category_name }} <sup>{{ number_format($main_menus->price,2) }} T.K</sup></h3>
+                                
+                                    <p class="text-capitalize">You Will Get:</p>
+                                    <p>
+                                        <?php echo $main_menus->description; ?>
+                                    </p>
                                 </div>
                                     <form action="{{ route('pages.package.AddToCart') }}" method="POST">
                                         @csrf

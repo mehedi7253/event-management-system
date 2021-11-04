@@ -9,7 +9,7 @@
                     <img src="{{ asset('package/images/'.$packages->image) }}" class="card-img-top" style="height: 200px; width: 100%">
                     <div class="card-body">
                         <h3 class="text-capitalize text-center">{{ $packages->package_name }}<sup class="text-success"> Available</sup></h3>
-                        <p>{{ number_format($packages->price,2) }} T.K <span class="float-right"> 0 People Rate It</span></p>
+                        <p class="text-center mt-3">0 People Rate It</p>
                     </div>
                     <div class="card-footer">
                         <a href="{{ route('pages.package.show', ['name'=>$packages->package_name])}}" class="btn btn-info float-right">View More</a>

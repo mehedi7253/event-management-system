@@ -29,26 +29,31 @@
                   <th>Order Date</th>
                   <th>Total Amount</th>
                   <th>Percent</th>
+                  <th>Due</th>
                   <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                 {{-- @foreach ($orders as $i=>$order)
+                 @foreach ($orders as $i=>$order)
                     <tr>
                         <td>{{ ++$i }}</td>
-                        <td>{{ $order->name }}</td>
+                        <td>{{ $order->invoice_number }}</td>
+                        <td>{{ date('Y-m-d', strtotime($order->created_at)) }}</td>
+                        <td>{{ number_format($order->amount,2) }}</td>
+                        <td>{{ $order->comission }} %</td>
                         <td>
-                            @php
-                                $totalorder = DB::table('assignstackholders')->where('stackholder_id','=', $order->stackholder_id)->where('process','=','1')->count();
-                                echo $totalorder;
-                            @endphp
+                          @php
+                            $percent = $order->amount * $order->comission /100;
+                            echo $percent;
+                          @endphp
                         </td>
+                        <td></td>
                         <td>
                             <a class="btn btn-info" href="{{ route('stackeholder-payments.show', $order->id) }}"><i class="fa fa-eye"></i></a>
                         </td>
                     </tr>
-                 @endforeach --}}
+                 @endforeach
               </tbody>
             </table>
           </div>

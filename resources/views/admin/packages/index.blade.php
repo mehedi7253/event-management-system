@@ -27,7 +27,6 @@
             <thead class="thead-light">
               <tr>
                 <th>Package Name</th>
-                <th>Price</th>
                 <th>Status</th>
                 <th>Image</th>
                 <th>Action</th>
@@ -37,7 +36,6 @@
                 @foreach ($packages as $package)
                 <tr>
                     <td>{{ $package->package_name }}</td>
-                    <td>{{ number_format($package->price,2)  }}</td>
                     <td>
                        @if($package->status == '0')
                         <span class="label text-success">Published</span>
