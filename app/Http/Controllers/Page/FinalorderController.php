@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Usern;
+namespace App\Http\Controllers\Page;
 
 use App\Http\Controllers\Controller;
+use App\Models\event;
+use App\Models\orders;
 use Illuminate\Http\Request;
 
-class UserchatController extends Controller
+class FinalorderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -57,7 +59,9 @@ class UserchatController extends Controller
      */
     public function edit($id)
     {
-        //
+        $orders = orders::find($id);
+        $event =  event::all();
+        return view('pages.package.order', compact('orders','event'));
     }
 
     /**
@@ -69,7 +73,7 @@ class UserchatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

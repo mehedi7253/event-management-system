@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\NewOrderController;
 use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\StakholderPaymentController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Page\EventcheckController;
+use App\Http\Controllers\Page\FinalorderController;
 use App\Http\Controllers\Page\OrderController;
 use App\Http\Controllers\Page\PagePackageController;
 use App\Http\Controllers\stack\StackchatController;
@@ -69,6 +71,9 @@ Route::group(['prefix' => 'stakeholder','middleware' => ['stakeholder', 'auth']]
 Route::get('/package/index', [PagePackageController::class, 'index'])->name('pages.package.index');
 Route::get('/package/{name}', [PagePackageController::class, 'show'])->name('pages.package.show');
 Route::post('package/AddToCart', [PagePackageController::class, 'AddToCart'])->name('pages.package.AddToCart');
+Route::POST('/package/event', [EventcheckController::class, 'search'])->name('event.search');
+Route::resource('finalorders', FinalorderController::class);
+
 
 // order
 Route::resource('orders', OrderController::class);

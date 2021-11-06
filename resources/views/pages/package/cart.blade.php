@@ -8,6 +8,8 @@
         <div class="card-body">
           
             <div class="col-md-6 col-sm-12 float-left border-right">
+                <h4>Your Infomation</h4>
+                <hr/>
                 @if(Auth::check() && Auth::user()->role_id == 2)
                     <div class="form-group">
                         <label>Name</label>
@@ -84,7 +86,7 @@
                                     <input type="text" name="address" value="{{ Auth::user()->address }}" hidden>
                                     <input type="text" name="invoice_number" value="{{ $invoice_number }}" hidden>
                                     <input type="text" name="amount" value="{{ $total_price }}" hidden>
-                                    <input type="submit" name="btn" class="btn btn-info" value="Submit">
+                                    <input type="submit" name="btn" class="btn btn-info" value="Next">
                                 </form>
                             </td>
                         </tr>

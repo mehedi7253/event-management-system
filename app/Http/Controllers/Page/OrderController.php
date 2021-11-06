@@ -48,7 +48,8 @@ class OrderController extends Controller
         $order->process        = 0;
 
         $order->save();
-        return $order;
+        $order_id = $order->id;
+        return redirect()->route('finalorders.edit',[$order_id]);
     }
 
     /**

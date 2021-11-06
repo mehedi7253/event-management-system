@@ -21,6 +21,8 @@ class CreateOrdersTable extends Migration
             $table->string('address');
             $table->string('invoice_number');
             $table->string('amount');
+            $table->string('booking_date')->nullable();
+            $table->string('event_location')->nullable();
             $table->bigInteger('process');
             $table->timestamps();
         });

@@ -23,5 +23,7 @@
     </section>
 
    @include('pages.layouts.script')
+
+   @yield('script')
 </body>
 </html>
