@@ -30,9 +30,14 @@ class EventcheckController extends Controller
         if (count($data)>0){
             return back()->with('error','Date is Booked..Try Another Date');
         }else{
-            return back()->with('success', 'Date Is Avilable',compact($data));
+            return back()->with('success','Date Avilable', compact('data'));
         }
         
+    }
+
+    public function update(Request $request, $id)
+    {
+        return $id;
     }
 
   

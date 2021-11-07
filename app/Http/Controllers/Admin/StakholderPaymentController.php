@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\assignstackholder;
 use App\Models\orders;
+use App\Models\stakeholderpayment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -60,9 +62,10 @@ class StakholderPaymentController extends Controller
         $orders  = DB::table('assignstackholders')
                 ->join('users','users.id','=','assignstackholders.stackholder_id')
                 ->join('orders','orders.id','=', 'assignstackholders.order_id')
-                // ->select('users.name as StakeholderName','users.id as stakeholderID','orders.id as OrderID','orders.invoice_number')
+                ->select('orders.id as orderID','orders.invoice_number','orders.created_at','orders.amount','assignstackholders.comission', 'assignstackholders.id as AssignID', 'assignstackholders.given_amount')
                 ->get();
-        // return $orders;
+       
+
         return view('admin.payment.show', compact('page_name','orders'));
     }
 
@@ -74,7 +77,14 @@ class StakholderPaymentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page_name = "Stakeholder Payment";
+        $assign_id = assignstackholder::find($id);
+        $payable_amount = DB::table('assignstackholders')
+                        ->join('orders','orders.id','=','assignstackholders.order_id')
+                        ->where('assignstackholders.id','=', $id)
+                        ->get();
+        
+        return view('admin.payment.giveamount', compact('assign_id','page_name','payable_amount')); 
     }
 
     /**
@@ -86,7 +96,16 @@ class StakholderPaymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $stakeholder_payment = assignstackholder::find($id);
+        $date = @date('m-d-Y');
+
+        $stakeholder_payment->given_amount  = $request->given_amount;
+        $stakeholder_payment->pay_date      = $date;
+        $stakeholder_payment->process       = 1;
+
+        $stakeholder_payment->save();
+        return redirect()->route('stackeholder-payments.index')->with('success','Payment Given Successful');
+
     }
 
     /**

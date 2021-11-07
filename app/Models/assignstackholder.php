@@ -11,7 +11,7 @@ class assignstackholder extends Model
     public $timestamps = true;
     protected $table = 'assignstackholders';
     protected $fillable = [
-        'order_id', 'stackholder_id', 'process','comission'
+        'order_id', 'stackholder_id', 'process','comission', 'given_amount', 'pay_date'
     ];
 
 }

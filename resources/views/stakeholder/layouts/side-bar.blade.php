@@ -36,6 +36,18 @@
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2"
         aria-expanded="true" aria-controls="collapseBootstrap">
         <i class="far fa-fw fa-window-maximize"></i>
+        <span>Payment</span>
+      </a>
+      <div id="collapseBootstrap2" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="{{ route('payment.index') }}">Payment</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap2"
+        aria-expanded="true" aria-controls="collapseBootstrap">
+        <i class="far fa-fw fa-window-maximize"></i>
         <span>Chat</span>
       </a>
       <div id="collapseBootstrap2" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
@@ -44,4 +56,5 @@
         </div>
       </div>
     </li>
+    
   </ul>

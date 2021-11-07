@@ -1,4 +1,4 @@
-@extends('admin.layouts.app')
+@extends('stakeholder.layouts.app')
     @section('content')
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <ol class="breadcrumb">
@@ -30,7 +30,7 @@
                   <th>Total Amount</th>
                   <th>Percent</th>
                   <th>Due</th>
-                  <th>Action</th>
+                  <th>Paid Amount</th>
                 </tr>
               </thead>
               <tbody>
@@ -51,18 +51,26 @@
                               {{ number_format($percent,2) }}
                            @endif
                         </td>
-
                         <td>
-                  
-                           @if($order->given_amount == $percent)
-                            <button class="btn btn-success">Paid</button>
-                            @else
-                             <a class="btn btn-info" href="{{ route('stackeholder-payments.edit', $order->AssignID) }}">Pay Now</a>
-                           @endif
+                            {{ number_format($order->given_amount,2) }}
                         </td>
+                        
                     </tr>
                  @endforeach
               </tbody>
+              <tfoot>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td>Total</td>
+                      <td>
+                          {{ number_format($total,2) }}
+                      </td>
+                  </tr>
+              </tfoot>
             </table>
           </div>
        </div>

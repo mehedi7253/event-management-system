@@ -26,11 +26,11 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @if(Auth::user()->role_id == '1')
-                            <a class="dropdown-item text-capitalize" href="admin/index">Profile</a>
+                            <a class="dropdown-item text-capitalize" href="{{ route('admin.index') }}">Profile</a>
                             @elseif (Auth::user()->role_id == '2')
-                            <a class="dropdown-item text-capitalize" href="user/index">Profile</a>
+                            <a class="dropdown-item text-capitalize" href="{{ route('user.index') }}">Profile</a>
                             @elseif (Auth::user()->roler_id == '3')
-                            <a class="dropdown-item text-capitalize" href="stakeholder/index">Profile</a>
+                            <a class="dropdown-item text-capitalize" href="{{ route('stakeholder.index') }}">Profile</a>
                         @endif
                         <a class="dropdown-item text-capitalize" href="{{ route('logout') }}"
                         onclick="event.preventDefault();  document.getElementById('logout-form').submit();">

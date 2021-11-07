@@ -14,6 +14,7 @@ use App\Http\Controllers\Page\EventcheckController;
 use App\Http\Controllers\Page\FinalorderController;
 use App\Http\Controllers\Page\OrderController;
 use App\Http\Controllers\Page\PagePackageController;
+use App\Http\Controllers\Stack\PaymentController;
 use App\Http\Controllers\stack\StackchatController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Stack\StackController;
@@ -64,6 +65,7 @@ Route::group(['prefix' => 'stakeholder','middleware' => ['stakeholder', 'auth']]
 
     Route::resource('new-orders', ViewOrderController::class);
     Route::resource('stack-chat', StackchatController::class);
+    Route::resource('payment', PaymentController::class);
 });
 
 // pages
@@ -73,6 +75,7 @@ Route::get('/package/{name}', [PagePackageController::class, 'show'])->name('pag
 Route::post('package/AddToCart', [PagePackageController::class, 'AddToCart'])->name('pages.package.AddToCart');
 Route::POST('/package/event', [EventcheckController::class, 'search'])->name('event.search');
 Route::resource('finalorders', FinalorderController::class);
+// Route::POST('/package/update/{id}', [EventcheckController::class, 'search'])->name('event.update');
 
 
 // order
