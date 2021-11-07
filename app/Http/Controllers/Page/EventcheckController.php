@@ -37,7 +37,12 @@ class EventcheckController extends Controller
 
     public function update(Request $request, $id)
     {
-        return $id;
+        $orders = orders::find($id);
+        $orders->booking_date   = $request->booking_date;
+        $orders->event_location = $request->event_location;
+        $orders->save();
+
+        return back();
     }
 
   

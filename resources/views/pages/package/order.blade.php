@@ -17,14 +17,29 @@
              <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
             <div class="col-md-6 col-sm-12 float-left">
-                @if(isset($data))
-                   
-                    @if($data > 0)
-                        
+                @if (session('success'))
+                
+                    <form action="{{ route('package.event.update', $orders->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <div class="form-group">
+                            <label>Select Date: <sup class="text-danger">*</sup></label>
+                            <input type="date" name="booking_date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Select Event: <sup class="text-danger">*</sup></label>
+                            <select class="form-control" name="event_location">
+                                <option>---------Select One---------</option>
+                                @foreach ($event as $events)
+                                    <option value="{{ $events->event_name }}">{{ $events->event_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </form>
                     @else
-                    
-                    @endif
-                @else
                     <form action="{{ route('event.search') }}" method="POST" role="search">
                         @csrf
                         <div class="form-group">
@@ -44,8 +59,9 @@
                             <button type="submit" id="search" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
                         </div>
                     </form>
-
                 @endif
+
+                 
             </div>
         </div>
        </div>

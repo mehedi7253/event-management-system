@@ -8,22 +8,24 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="img/logo/logo.png" rel="icon">
-  <title>RuangAdmin - Blank Page</title>
+  <title>Admin Pannel</title>
   <link href="{{ asset('assets/template/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets/template/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets/template/css/ruang-admin.min.css') }}" rel="stylesheet">
+  <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+  <link href="{{ asset('assets/template/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
 </head>
 
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
-    @include('template.side-bar')
+    @include('stakeholder.layouts.side-bar')
     <!-- Sidebar -->
     
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <!-- TopBar -->
-        @include('template.nav')
+        @include('stakeholder.layouts.nav')
         <!-- Topbar -->
 
         <!-- Container Fluid-->
@@ -34,7 +36,7 @@
         <!---Container Fluid-->
       </div>
       <!-- Footer -->
-        @include('template.footer')
+        @include('stakeholder.layouts.footer')
       <!-- Footer -->
     </div>
   </div>
@@ -45,7 +47,7 @@
   </a>
 
   
-  @include('template.script')
+  @include('stakeholder.layouts.script')
   @yield('script')
 </body>
 
