@@ -27,6 +27,7 @@
                   <th>#</th>
                   <th>Package Name</th>
                   <th>Category Name</th>
+                  <th>Price</th>
                   <th>Sub Category</th>
                   <th>Action</th>
                 </tr>
@@ -37,7 +38,7 @@
                       <td>{{ ++$i }}</td>
                       <td>{{ $categorys->packages->package_name }}</td>
                       <td>{{ $categorys->category_name }}</td>
-                    
+                      <td>{{ $categorys->category_price }}</td>
                       <td>
                           {{-- <a href="" class="btn btn-primary"><i class="fa fa-eye"></i></a> --}}
                           <a href="{{ route('sub-categorys.edit',  $categorys->id) }}" class="btn btn-info"><i class="fa fa-plus"></i></a>

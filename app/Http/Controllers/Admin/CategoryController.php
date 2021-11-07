@@ -42,21 +42,21 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'package_id'    => 'required',
-            'category_name' => 'required',
-            'price'         => 'required',
-            'description'   => 'required'
+            'package_id'     => 'required',
+            'category_name'  => 'required',
+            'category_price' => 'required',
+            'description'    => 'required'
         ],[
-            'package_id.required'    => 'Please Select an Package First',
-            'category_name.required' => 'Please Enter Catgeory Name',
-            'price.requires'         => 'Please Enter Price',
-            'description.required'   => 'Please Enter Description' 
+            'package_id.required'     => 'Please Select an Package First',
+            'category_name.required'  => 'Please Enter Catgeory Name',
+            'category_price.requires' => 'Please Enter Price',
+            'description.required'    => 'Please Enter Description' 
         ]);
         $category = new category();
-        $category->package_id    = $request->package_id;
-        $category->category_name = $request->category_name;
-        $category->price         = $request->price;
-        $category->description   = $request->description;
+        $category->package_id     = $request->package_id;
+        $category->category_name  = $request->category_name;
+        $category->category_price = $request->category_price;
+        $category->description    = $request->description;
 
         $category->save();
         return back()->with('success', 'New Category Added Successful');
@@ -96,20 +96,20 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'category_name' => 'required',
-            'price'         => 'required',
-            'description'   => 'required'
+            'category_name'  => 'required',
+            'category_price' => 'required',
+            'description'    => 'required'
         ],[
             'package_id.required'     => 'Please Select an Package First',
             'category_name.required'  => 'Please Enter Catgeory Name',
-            'price.required'          => 'Please Enter Price',
+            'category_price.required' => 'Please Enter Price',
             'description.required'    => 'Please Enter Description' 
         ]);
 
         $category = category::find($id);
-        $category->category_name = $request->category_name;
-        $category->price         = $request->price;
-        $category->description   = $request->description;
+        $category->category_name  = $request->category_name;
+        $category->category_price = $request->category_price;
+        $category->description    = $request->description;
 
         $category->save();
         return redirect()->route('categorys.index')->with('success', 'Category Update Successful');

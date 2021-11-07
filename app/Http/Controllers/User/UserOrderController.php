@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\cart;
+use App\Models\orders;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserOrderController extends Controller
 {
@@ -14,7 +18,10 @@ class UserOrderController extends Controller
      */
     public function index()
     {
-        //
+        $page_name = "My Order List";
+        $orders = orders::all()->where('email','=', Auth::user()->email);
+
+        return view('user.order.index', compact('page_name','orders'));
     }
 
     /**
@@ -46,8 +53,35 @@ class UserOrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $page_name = "Order Details";
+        $orders    = orders::find($id);
+        $invoice_number = $orders->invoice_number;
+
+        $order_item = DB::table('orders')
+                    ->join('carts','carts.invoice_number', '=', 'orders.invoice_number')
+                    ->join('packages','packages.id', '=', 'carts.package_id')
+                    ->join('categories', 'categories.id', '=', 'carts.category_id')
+                    ->join('subcategories', 'subcategories.id', 'carts.sub_category_id')
+                    ->where('orders.invoice_number','=', $invoice_number)
+                    ->get();
+
+         $total_price = 0;
+        foreach ($order_item as $order){
+            $package_name   = $order->package_name;
+            $package_price  = $order->price;
+            $main_price     = $order->category_price;
+            $main_menu      = $order->name;
+            $total_price   += $order->price;
+        }  
+       
+       $stake_holder = DB::table('assignstackholders')
+                ->join('orders','orders.id', '=', 'assignstackholders.order_id')
+                ->join('users','users.id', '=', 'assignstackholders.stackholder_id')
+                ->where('assignstackholders.order_id','=', $orders->id)
+                ->get();
+        return view('user.order.show', compact('page_name','order_item','orders', 'package_name', 'total_price', 'main_menu','stake_holder','main_price'));
     }
+
 
     /**
      * Show the form for editing the specified resource.

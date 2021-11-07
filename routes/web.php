@@ -80,7 +80,6 @@ Route::POST('/package/event', [EventcheckController::class, 'search'])->name('ev
 Route::PUT('/package/update/{id}', [EventcheckController::class, 'update'])->name('package.event.update');
 
 Route::resource('finalorders', FinalorderController::class);
-// Route::POST('/package/update/{id}', [EventcheckController::class, 'search'])->name('event.update');
 
 
 // order

@@ -69,6 +69,7 @@ class NewOrderController extends Controller
             $package_name   = $order->package_name;
             $package_price  = $order->price;
             $main_menu      = $order->name;
+            $main_price     = $order->category_price;
             $total_price   += $order->price;
         }  
        
@@ -77,7 +78,7 @@ class NewOrderController extends Controller
                 ->join('users','users.id', '=', 'assignstackholders.stackholder_id')
                 ->where('assignstackholders.order_id','=', $orders->id)
                 ->get();
-        return view('admin.orders.invoice', compact('page_name','order_item','orders', 'package_name', 'total_price', 'main_menu','stake_holder'));
+        return view('admin.orders.invoice', compact('page_name','order_item','orders', 'package_name', 'total_price', 'main_menu','stake_holder','main_price'));
     }
 
     /**

@@ -20,13 +20,18 @@
             <h6>{{ $page_name }} </h6>
         </div> 
        <div class="card-body">
-           <div class="col-md-12 col-sm-12 float-left">
-             <p class="font-weight-bold">Coustomer Details</p>
-             {{ $orders->name }} <br/>
-             {{ $orders->email }} <br/>
-             {{ $orders->phone }} <br/>
-             {{ $orders->address }} <br/>
-           </div>
+        <div class="col-md-6 col-sm-12 float-left">
+            <p class="font-weight-bold">Coustomer Details</p>
+            {{ $orders->name }} <br/>
+            {{ $orders->email }} <br/>
+            {{ $orders->phone }} <br/>
+            {{ $orders->address }} <br/>
+          </div>
+          <div class="col-md-6 col-sm-12 float-left text-right">
+           <p class="font-weight-bold">Event Location</p>
+               {{ $orders->event_location }} <br/>
+               {{ date('Y-M-d', strtotime($orders->booking_date))  }}<br/><br/><br/>
+         </div>
          
            <div class="col-md-6 col-sm-12 float-left">
             <p class="font-weight-bold"> Order Date: {{ $orders->created_at }}</p>
@@ -49,12 +54,12 @@
                     <tr>
                         <th>Package</th>
                         <td>{{ $package_name }}</td>
-                        <td></td>
+                        <td>Price</td>
                     </tr>
                     <tr>
                         <th>Main Menu</th>
                         <td>{{ $main_menu }}</td>
-                        <td></td>
+                        <td>{{ $main_price }}</td>
                     </tr>
                     <tr>
                         <th>Sub Menu</th>

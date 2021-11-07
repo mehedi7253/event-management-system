@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="img/logo/logo.png" rel="icon">
-  <title>Admin Pannel</title>
+  <title>{{ Auth::user()->name }}</title>
   <link href="{{ asset('assets/template/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets/template/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets/template/css/ruang-admin.min.css') }}" rel="stylesheet">
@@ -19,13 +19,13 @@
 <body id="page-top">
   <div id="wrapper">
     <!-- Sidebar -->
-    @include('stakeholder.layouts.side-bar')
+    @include('user.layouts.side-bar')
     <!-- Sidebar -->
     
     <div id="content-wrapper" class="d-flex flex-column">
       <div id="content">
         <!-- TopBar -->
-        @include('stakeholder.layouts.nav')
+        @include('user.layouts.nav')
         <!-- Topbar -->
 
         <!-- Container Fluid-->
@@ -36,7 +36,7 @@
         <!---Container Fluid-->
       </div>
       <!-- Footer -->
-        @include('stakeholder.layouts.footer')
+        @include('user.layouts.footer')
       <!-- Footer -->
     </div>
   </div>
@@ -47,7 +47,7 @@
   </a>
 
   
-  @include('stakeholder.layouts.script')
+  @include('user.layouts.script')
   @yield('script')
 </body>
 

@@ -38,8 +38,8 @@
             </div>
             <div class="form-group col-sm-12 col-md-6 float-left">
                 <label>Price<sup class="font-weight-bold text-danger">*</sup></label>
-                <input id="price" type="number" min="1" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $category->price }}" placeholder="Enter Category price" autocomplete="price" autofocus>
-                @error('price')
+                <input id="category_price" type="number" min="1" class="form-control @error('category_price') is-invalid @enderror" name="category_price" value="{{ $category->category_price }}" placeholder="Enter Category price" autocomplete="category_price" autofocus>
+                @error('category_price')
                 <span class="invalid-feedback" role="alert">
                      <label style="color: red">{{ $message }}</label>
                  </span>

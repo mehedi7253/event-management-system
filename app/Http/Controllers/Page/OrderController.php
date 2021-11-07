@@ -77,7 +77,7 @@ class OrderController extends Controller
                 ->get();
       
         foreach ($main_cat as $main_price){
-           $main_cat_price = $main_price->price;
+           $main_cat_price = $main_price->category_price;
         } 
 
         $total_price = $main_cat_price;

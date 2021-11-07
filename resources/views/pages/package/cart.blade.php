@@ -50,7 +50,7 @@
                             <th>Main Menu</th>
                             @foreach ($main_cat as $main_menu)
                                 <td>{{ $main_menu->category_name }}</td>
-                                <td>{{ number_format($main_menu->price,2) }}</td>                                
+                                <td>{{ number_format($main_menu->category_price,2) }}</td>                                
                             @endforeach
                         </tr>
                         <tr>

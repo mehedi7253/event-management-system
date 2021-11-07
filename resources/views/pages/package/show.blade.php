@@ -14,7 +14,7 @@
                         <div class="col-md-4 col-sm-12 float-left mb-2">
                             <div class="card">
                                 <div class="card-header">
-                                    <h3>{{ $main_menus->category_name }} <sup>{{ number_format($main_menus->price,2) }} T.K</sup></h3>
+                                    <h3>{{ $main_menus->category_name }} <sup>{{ number_format($main_menus->category_price,2) }} T.K</sup></h3>
                                 
                                     <p class="text-capitalize">You Will Get:</p>
                                     <p>

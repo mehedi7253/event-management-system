@@ -42,7 +42,7 @@ class EventcheckController extends Controller
         $orders->event_location = $request->event_location;
         $orders->save();
 
-        return back();
+        return view('pages.package.success');
     }
 
   
