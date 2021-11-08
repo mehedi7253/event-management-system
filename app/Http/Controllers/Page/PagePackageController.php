@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Page;
 use App\Http\Controllers\Controller;
 use App\Models\cart;
 use App\Models\package;
+use App\Models\rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -30,7 +31,12 @@ class PagePackageController extends Controller
                 ->where('package_id','=',$package_id)
                 ->get();
 
-       return view('pages.package.show', compact('package', 'main_menu'));
+    //  $ratings = rating::all()->where('package_id','=',$package_id);
+     $ratings = DB::table('ratings')
+            ->join('users','users.id','=','ratings.user_id')
+            ->where('ratings.package_id','=', $package_id)
+            ->get();   
+       return view('pages.package.show', compact('package', 'main_menu','ratings'));
     }
 
     public function AddToCart(Request $request)

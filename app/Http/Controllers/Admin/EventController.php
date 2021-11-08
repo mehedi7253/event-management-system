@@ -42,14 +42,12 @@ class EventController extends Controller
         $this->validate($request,[
             'event_name'  => 'required',
             'location'    => 'required',
-            'start_date'  => 'required',
             'description' => 'required',
             'image'       => 'required | mimes:jpg,png,jpeg|max:7048',
             'status'      => 'required'
         ],[
             'event_name.required'    => 'Please Enter Event Name',
             'location.requires'      => 'Please Enter Location',
-            'start_date.required'    => 'Please Enter Start Date',
             'description.required'   => 'Please Enter Description',
             'image.required'         => 'Please Select an Image',
             'image.mimes'            => 'Please Select Jpg,png,jpeg Type',
@@ -60,7 +58,6 @@ class EventController extends Controller
         $event = new event();
         $event->event_name   = $request->event_name;
         $event->location     = $request->location;
-        $event->start_date   = $request->start_date;
         $event->description  = $request->description;
         $event->status       = $request->status;
 
@@ -118,14 +115,12 @@ class EventController extends Controller
         $this->validate($request,[
             'event_name'  => 'required',
             'location'    => 'required',
-            'start_date'  => 'required',
             'description' => 'required',
             'image'       => 'mimes:jpg,png,jpeg|max:7048',
             'status'       => 'required'
         ],[
             'event_name.required'    => 'Please Enter Event Name',
             'location.requires'      => 'Please Enter Location',
-            'start_date.required'    => 'Please Enter Start Date',
             'description.required'   => 'Please Enter Description',
             'image.mimes'            => 'Please Select Jpg,png,jpeg Type',
             'image.max'              => 'Please Select Image Less Then 8 Mb',
@@ -135,7 +130,6 @@ class EventController extends Controller
         $event = event::find($id);
         $event->event_name   = $request->event_name;
         $event->location     = $request->location;
-        $event->start_date   = $request->start_date;
         $event->status       = $request->status;
         $event->description  = $request->description;
 

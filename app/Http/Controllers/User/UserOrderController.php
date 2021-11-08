@@ -21,6 +21,10 @@ class UserOrderController extends Controller
         $page_name = "My Order List";
         $orders = orders::all()->where('email','=', Auth::user()->email);
 
+        // $package = DB::table('orders')
+        //         ->join('carts','carts.invoice_number','=','orders.invoice_number')
+        //         ->groupBy('carts.invoice_number')
+        //         ->get();
         return view('user.order.index', compact('page_name','orders'));
     }
 

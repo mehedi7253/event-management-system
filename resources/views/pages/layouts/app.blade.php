@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets/template/css/bootstrap.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/template/css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
 </head>
 <body>
     <section class="menu">

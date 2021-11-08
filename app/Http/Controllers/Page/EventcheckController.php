@@ -18,7 +18,7 @@ class EventcheckController extends Controller
         $search = $request->event_location;
         $date   = $request->booking_date;
         
-        $date_format = date('m-d-Y', strtotime($date));
+        $date_format = date('Y-m-d', strtotime($date));
 
         // return $format;
 

@@ -11,6 +11,7 @@
   <title>{{ Auth::user()->name }}</title>
   <link href="{{ asset('assets/template/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets/template/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
+  <link href="{{ asset('assets/template/css/style.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/template/css/ruang-admin.min.css') }}" rel="stylesheet">
   <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
   <link href="{{ asset('assets/template/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">

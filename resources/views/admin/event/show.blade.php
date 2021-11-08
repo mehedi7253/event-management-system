@@ -33,10 +33,7 @@
                         <th>Location</th>
                         <td>{{ $event->location }}</td>
                     </tr>
-                    <tr>
-                        <th>Start Date</th>
-                        <td>{{ $event->start_date }}</td>
-                    </tr>
+                  
                     <tr>
                         <th>Status</th>
                         <td>

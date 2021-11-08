@@ -19,7 +19,9 @@ use App\Http\Controllers\stack\StackchatController;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Stack\StackController;
 use App\Http\Controllers\Stack\ViewOrderController;
+use App\Http\Controllers\User\RateController;
 use App\Http\Controllers\User\UserOrderController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,6 +62,7 @@ Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
     Route::get('index', [UserController::class, 'index'])->name('user.index');
 
     Route::resource('user-orders', UserOrderController::class);
+    Route::resource('rating', RateController::class);
 });
 
 //stakeholder
@@ -78,7 +81,6 @@ Route::get('/package/{name}', [PagePackageController::class, 'show'])->name('pag
 Route::post('package/AddToCart', [PagePackageController::class, 'AddToCart'])->name('pages.package.AddToCart');
 Route::POST('/package/event', [EventcheckController::class, 'search'])->name('event.search');
 Route::PUT('/package/update/{id}', [EventcheckController::class, 'update'])->name('package.event.update');
-
 Route::resource('finalorders', FinalorderController::class);
 
 

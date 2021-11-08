@@ -38,7 +38,6 @@
                       <td>{{ ++$i }}</td>
                       <td>{{ $events->event_name }}</td>
                       <td>{{ $events->location }}</td>
-                      <td>{{ $events->start_date }}</td>
                       <td>
                           <img src="{{ asset('event/images/'.$events->image) }}" class="img-thumbnail" style="height: 50px; width: 50px">   
                       </td>

@@ -4,7 +4,7 @@
         @foreach ($package as $packages)
             <div class="card mt-5">
                 <div class="card-header">
-                    <h3 class="text-capitalize">{{ $packages->package_name }} Package <span class="float-right"> 4 People Rate It</span></h3>
+                    <h3 class="text-capitalize">{{ $packages->package_name }} Package <span class="float-right"> {{ $ratings->count() }} People Rate It</span></h3>
                 </div>
                 <div class="card-body">
                     <div class="col-md-4 col-sm-12 float-left border-right">
@@ -43,4 +43,21 @@
         @endforeach
     </div>
 
+    <div class="col-md-12 col-sm-12 mb-5">
+        <div class="card">
+            <div class="card-body">
+                @foreach ($ratings as $rating)
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <img src="{{ $rating->image }}" style="height: 50px; width: 50px; border-radius: 50%;"> <span class="ml-2">{{ $rating->name }}</span>
+                        </div>
+                       
+                        <p class="ml-4 text-justify" style="margin-left: 8px; margin-top: 10px">
+                            <?php echo $rating->description?>
+                        </p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
 @endsection

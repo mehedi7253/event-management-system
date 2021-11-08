@@ -39,15 +39,7 @@
                  </span>
                 @enderror
             </div>
-            <div class="form-group col-sm-12 col-md-6 float-left">
-                <label>Start Date <sup class="font-weight-bold text-danger">*</sup></label>
-                <input id="start_date" type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ $event->start_date }}" autocomplete="start_date" autofocus>
-                @error('start_date')
-                <span class="invalid-feedback" role="alert">
-                     <label style="color: red">{{ $message }}</label>
-                 </span>
-                @enderror
-            </div>
+           
             <div class="form-group col-sm-12 col-md-6 float-left mt-5">
                 <label>Status<sup class="font-weight-bold text-danger ">*</sup></label>
                 @if($event->status == '0')

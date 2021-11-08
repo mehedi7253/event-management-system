@@ -5,12 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class event extends Model
+class rating extends Model
 {
     use HasFactory;
     public $timestamps = true;
-    protected $table = 'events';
+    protected $table = 'ratings';
     protected $fillable = [
-        'event_name', 'location','description','image','status',
+        'user_id', 'package_id','status', 'description',
     ];
+
+    public function users()
+    {
+        return $this->hasMany(users::class);
+    }
 }
