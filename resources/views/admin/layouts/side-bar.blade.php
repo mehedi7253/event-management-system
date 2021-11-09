@@ -7,7 +7,7 @@
     </a>
     <hr class="sidebar-divider my-0">
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="{{ route('admin.index') }}">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
@@ -15,6 +15,7 @@
     <div class="sidebar-heading">
       Features
     </div>
+
     <li class="nav-item">
       <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
         aria-expanded="true" aria-controls="collapseBootstrap">
@@ -70,6 +71,18 @@
         <div class="bg-white py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{ route('admin-stackholder.index') }}">Manage Stakeholder</a>
           <a class="collapse-item" href="{{ route('admin-stackholder.create') }}">Add New Stakeholder</a>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap8"
+        aria-expanded="true" aria-controls="collapseBootstrap">
+        <i class="far fa-fw fa-window-maximize"></i>
+        <span>Manage Users</span>
+      </a>
+      <div id="collapseBootstrap8" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="{{ route('manage-users.index') }}">Manage Users</a>
         </div>
       </div>
     </li>

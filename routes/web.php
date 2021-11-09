@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AssignStakeholderControleerr;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\ManageuserController;
 use App\Http\Controllers\Admin\StackeholderController;
 use App\Http\Controllers\Admin\NewOrderController;
 use App\Http\Controllers\Admin\PackageController;
@@ -57,6 +58,7 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('events', EventController::class);
     Route::resource('admin-chat', AdminchatController::class);
     Route::resource('stackeholder-payments', StakholderPaymentController::class);
+    Route::resource('manage-users', ManageuserController::class);
 });
 //user
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
