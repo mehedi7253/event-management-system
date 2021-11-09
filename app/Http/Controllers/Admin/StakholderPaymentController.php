@@ -97,7 +97,7 @@ class StakholderPaymentController extends Controller
     public function update(Request $request, $id)
     {
         $stakeholder_payment = assignstackholder::find($id);
-        $date = @date('m-d-Y');
+        $date = @date('Y-m-d');
 
         $stakeholder_payment->given_amount  = $request->given_amount;
         $stakeholder_payment->pay_date      = $date;

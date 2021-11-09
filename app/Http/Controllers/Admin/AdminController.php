@@ -21,8 +21,7 @@ class AdminController extends Controller
                 ->sum('amount');
 
         $neworder = DB::table('orders')
-                ->whereMonth('created_at', '=', $today)
-                ->where('process','=',0)
+                ->where('process','=', '0')
                 ->count();
                 
         $orders = orders::select("id","created_at" , DB::raw("(sum(amount)) as Total"), DB::raw("(DATE_FORMAT(created_at, '%d')) as day"))

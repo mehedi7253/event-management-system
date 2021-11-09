@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ManageuserController;
 use App\Http\Controllers\Admin\StackeholderController;
 use App\Http\Controllers\Admin\NewOrderController;
 use App\Http\Controllers\Admin\PackageController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\StakholderPaymentController;
 use App\Http\Controllers\Admin\SubcategoryController;
 use App\Http\Controllers\Page\EventcheckController;
@@ -59,6 +60,11 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('admin-chat', AdminchatController::class);
     Route::resource('stackeholder-payments', StakholderPaymentController::class);
     Route::resource('manage-users', ManageuserController::class);
+    Route::get('reports', [ReportController::class, 'index'])->name('admin.reports');
+    Route::get('reports/search', [ReportController::class, 'search'])->name('reports.search');
+    Route::get('reports/payment', [ReportController::class, 'stakeholderpayment'])->name('report.cost');
+    Route::get('cost/search', [ReportController::class, 'costsearch'])->name('cost.search');
+
 });
 //user
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
