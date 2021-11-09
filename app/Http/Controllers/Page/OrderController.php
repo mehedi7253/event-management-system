@@ -46,7 +46,8 @@ class OrderController extends Controller
         $order->invoice_number = $request->invoice_number;
         $order->amount         = $request->amount;
         $order->process        = 0;
-
+        $order->rating_status  = 0;
+        
         $order->save();
         $order_id = $order->id;
         return redirect()->route('finalorders.edit',[$order_id]);

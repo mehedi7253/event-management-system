@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\orders;
-use App\Models\rating;
+use App\Models\chat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class RateController extends Controller
+class UserchatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,9 @@ class RateController extends Controller
      */
     public function index()
     {
-        //
+        $page_name = "Chat With Admin";
+        $msgs =  chat::all();
+        return view('user.chat.index', compact('page_name','msgs'));
     }
 
     /**
@@ -38,7 +39,20 @@ class RateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'message'   => 'required'
+        ],[
+            'message.required' => 'Message Not Empty'
+        ]);
+        
+        $msg = new chat();
+        $msg->sender_id   = Auth::user()->id;
+        $msg->rechiver_id = 1;
+        $msg->message     = $request->message;
+        $msg->status      = 0;
+
+        $msg->save();
+        return back();
     }
 
     /**
@@ -49,7 +63,7 @@ class RateController extends Controller
      */
     public function show($id)
     {
-      //
+        //
     }
 
     /**
@@ -60,8 +74,7 @@ class RateController extends Controller
      */
     public function edit($id)
     {
-        $page_name = "Rate Package";
-        return view('user.rating.index', compact('page_name', 'id'));
+        //
     }
 
     /**
@@ -73,22 +86,7 @@ class RateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'status'      => 'required',
-            'description' => 'required'
-        ]);
-
-        $rate = new rating();
-        $rate->package_id    = $id;
-        $rate->status        = $request->status;
-        $rate->description   = $request->description;
-        $rate->user_id       = Auth::user()->id;
-
-        $update = orders::find($id);
-        $update->rating_status = 1;
-        $update->save();
-        $rate->save();
-        return redirect()->route('user-orders.index')->with('success','Rated Successful');
+        //
     }
 
     /**

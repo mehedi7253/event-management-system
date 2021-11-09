@@ -44,9 +44,4 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Models\Role');
     }
-
-    public function ratings()
-    {
-        return $this->belongsTo(rating::class);
-    }
 }

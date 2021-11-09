@@ -95,11 +95,15 @@ class AssignStakeholderControleerr extends Controller
         $assign->stackholder_id = $request->stackholder_id;
         $assign->comission      = $request->comission;
         $assign->process        = 0;
+        // return $assign;
+
 
         $update = orders::find($id);
         $update->process = '2';
         $update->save();
         $assign->save();
+
+        
         return back()->with('success','Stakeholder Assigned Successful');
     }
 

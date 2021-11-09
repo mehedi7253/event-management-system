@@ -24,6 +24,7 @@ class UserSeeder extends Seeder
                 'gender'   => 'Male',
                 'phone'    => '01941697253',
                 'status'   => '0',
+                'image'    => 'admin.jpg',
                 'password' => Hash::make('admin'),
             ],[
                 'name'     => 'user',
@@ -33,6 +34,7 @@ class UserSeeder extends Seeder
                 'gender'   => 'Male',
                 'phone'    => '01941697253',
                 'status'   => '0',
+                'image'    => 'admin.jpg',
                 'password' => Hash::make('user'),
             ],[
                 'name'     => 'Stac kHolder',
@@ -42,6 +44,7 @@ class UserSeeder extends Seeder
                 'gender'   => 'Male',
                 'phone'    => '01941697253',
                 'status'   => '0',
+                'image'    => 'admin.jpg',
                 'password' => Hash::make('stack'),
             ],
         ]);

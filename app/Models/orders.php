@@ -11,6 +11,6 @@ class orders extends Model
     public $timestamps = true;
     protected $table = 'orders';
     protected $fillable = [
-        'name', 'email', 'phone','address','invoice_number','amount','process','booking_date','event_location'
+        'name', 'email', 'phone','address','invoice_number','amount','process','booking_date','event_location','rating_status'
     ];
 }

@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string('booking_date')->nullable();
             $table->string('event_location')->nullable();
             $table->bigInteger('process');
+            $table->bigInteger('rating_status');
             $table->timestamps();
         });
     }

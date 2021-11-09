@@ -33,7 +33,7 @@
       </a>
       <div id="collapseBootstrap3" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <a class="collapse-item" href="">Chat</a>
+          <a class="collapse-item" href="{{ route('user-chat.index') }}">Chat</a>
         </div>
       </div>
     </li>

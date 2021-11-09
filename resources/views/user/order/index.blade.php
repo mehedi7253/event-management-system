@@ -57,13 +57,17 @@
                             @php
                               $package = DB::select(DB::raw("SELECT * FROM orders, carts WHERE orders.invoice_number = carts.invoice_number AND orders.id = $order->id GROUP BY orders.invoice_number")) 
                             @endphp
-                            @if($order->process == '3')
-                              @foreach ($package as $packages)
-                                <a class="btn btn-info" href="{{ route('rating.edit',$packages->package_id)  }}">Review Now</a>
-                              @endforeach
-                            @else
-                              <label class="text-danger">Event Not Complete</label>
-                            @endif
+                              @if($order->process == '3')
+                                @if($order->rating_status == '0')
+                                  @foreach ($package as $packages)
+                                    <a class="btn btn-info" href="{{ route('rating.edit',$packages->package_id)  }}">Review Now</a>
+                                  @endforeach
+                                @else
+                                  <label class="text-success">Rating Done</label>
+                                @endif
+                              @else
+                                <label class="text-danger">Event Not Complete</label>
+                              @endif
                          
                           </td>
                           <td>

@@ -13,9 +13,4 @@ class rating extends Model
     protected $fillable = [
         'user_id', 'package_id','status', 'description',
     ];
-
-    public function users()
-    {
-        return $this->hasMany(users::class);
-    }
 }
