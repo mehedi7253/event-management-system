@@ -69,6 +69,10 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
 //user
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
     Route::get('index', [UserController::class, 'index'])->name('user.index');
+    Route::get('profile-update', [UserController::class, 'edit'])->name('user.profile-update');
+    Route::PUT('update',[UserController::class,'update'])->name('user.profile.update');
+    Route::get('change-password', [UserController::class, 'changePass'])->name('user.changepass');
+    Route::post('change-password', [UserController::class, 'store'])->name('user.password.store');
 
     Route::resource('user-orders', UserOrderController::class);
     Route::resource('rating', RateController::class);
@@ -78,6 +82,10 @@ Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
 //stakeholder
 Route::group(['prefix' => 'stakeholder','middleware' => ['stakeholder', 'auth']], function (){
     Route::get('index', [StackController::class, 'index'])->name('stakeholder.index');
+    Route::get('profile-update', [StackController::class, 'edit'])->name('stack.profile-update');
+    Route::PUT('update',[StackController::class,'update'])->name('stack.profile.update');
+    Route::get('change-password', [StackController::class, 'changePass'])->name('stack.changepass');
+    Route::post('change-password', [StackController::class, 'store'])->name('stack.password.store');
 
     Route::resource('new-orders', ViewOrderController::class);
     Route::resource('stack-chat', StackchatController::class);

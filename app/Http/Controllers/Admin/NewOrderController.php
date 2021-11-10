@@ -55,30 +55,36 @@ class NewOrderController extends Controller
         $page_name = "Order Details";
         $orders    = orders::find($id);
         $invoice_number = $orders->invoice_number;
+        
+        $package = DB::select(DB::raw("SELECT carts.package_id, carts.invoice_number, packages.id, packages.package_name FROM carts, packages WHERE carts.invoice_number = $invoice_number GROUP By carts.package_id"));
+      
+        $sub_cat = DB::table('carts')
+            ->join('subcategories', 'subcategories.id', '=', 'carts.sub_category_id')
+            ->where('carts.invoice_number','=', $invoice_number)
+            ->get();
 
-        $order_item = DB::table('orders')
-                    ->join('carts','carts.invoice_number', '=', 'orders.invoice_number')
-                    ->join('packages','packages.id', '=', 'carts.package_id')
-                    ->join('categories', 'categories.id', '=', 'carts.category_id')
-                    ->join('subcategories', 'subcategories.id', 'carts.sub_category_id')
-                    ->where('orders.invoice_number','=', $invoice_number)
-                    ->get();
+        $main_cat = DB::table('carts')
+            ->join('categories', 'categories.id', '=', 'carts.category_id')
+            ->where('carts.invoice_number','=', $invoice_number)
+            ->groupBy('carts.category_id')
+            ->get();
 
-         $total_price = 0;
-        foreach ($order_item as $order){
-            $package_name   = $order->package_name;
-            $package_price  = $order->price;
-            $main_menu      = $order->name;
-            $main_price     = $order->category_price;
-            $total_price   += $order->price;
-        }  
+        foreach ($main_cat as $main_price){
+            $main_cat_price = $main_price->category_price;
+        } 
+    
+        $total_price = $main_cat_price;
+        foreach ($sub_cat as $order){
+            $total_price    += $order->price;
+        } 
+
        
        $stake_holder = DB::table('assignstackholders')
                 ->join('orders','orders.id', '=', 'assignstackholders.order_id')
                 ->join('users','users.id', '=', 'assignstackholders.stackholder_id')
                 ->where('assignstackholders.order_id','=', $orders->id)
                 ->get();
-        return view('admin.orders.invoice', compact('page_name','order_item','orders', 'package_name', 'total_price', 'main_menu','stake_holder','main_price'));
+        return view('admin.orders.invoice', compact('orders','page_name','main_cat','sub_cat', 'package', 'total_price', 'stake_holder'));
     }
 
     /**

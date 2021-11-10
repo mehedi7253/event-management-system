@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
   <link href="img/logo/logo.png" rel="icon">
-  <title>Admin Pannel</title>
+  <title>Stake Holder Pannel</title>
   <link href="{{ asset('assets/template/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets/template/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
   <link href="{{ asset('assets/template/css/ruang-admin.min.css') }}" rel="stylesheet">
