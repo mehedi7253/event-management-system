@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminchatController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AssignStakeholderControleerr;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\ManageuserController;
 use App\Http\Controllers\Admin\StackeholderController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Admin\PackageController;
 use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\StakholderPaymentController;
 use App\Http\Controllers\Admin\SubcategoryController;
+use App\Http\Controllers\Page\ContactusPageCOntroller;
 use App\Http\Controllers\Page\EventcheckController;
 use App\Http\Controllers\Page\FinalorderController;
 use App\Http\Controllers\Page\OrderController;
@@ -66,7 +68,7 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::get('reports/search', [ReportController::class, 'search'])->name('reports.search');
     Route::get('reports/payment', [ReportController::class, 'stakeholderpayment'])->name('report.cost');
     Route::get('cost/search', [ReportController::class, 'costsearch'])->name('cost.search');
-
+    Route::resource('contact', ContactController::class);
 });
 //user
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
@@ -104,5 +106,6 @@ Route::PUT('/package/update/{id}', [EventcheckController::class, 'update'])->nam
 Route::resource('finalorders', FinalorderController::class);
 Route::resource('pages-events', PageeventController::class);
 Route::resource('stake-holders', StakeHoldersController::class);
+Route::resource('contact-us', ContactusPageCOntroller::class);
 // order
 Route::resource('orders', OrderController::class);

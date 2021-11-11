@@ -136,4 +136,16 @@
         </div>
       </div>
     </li>
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap11"
+        aria-expanded="true" aria-controls="collapseBootstrap">
+        <i class="far fa-fw fa-window-maximize"></i>
+        <span>Contacts</span>
+      </a>
+      <div id="collapseBootstrap11" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <a class="collapse-item" href="{{ route('contact.index') }}"> Contact</a>
+        </div>
+      </div>
+    </li>
   </ul>

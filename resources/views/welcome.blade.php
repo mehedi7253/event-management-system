@@ -32,7 +32,7 @@
                         <a class="nav-link" href="{{ route('stake-holders.index') }}">Stake Holders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="{{ route('contact-us.index') }}">Contact</a>
                     </li>
                     <li class="nav-item dropdown">
                         @if (Route::has('login'))
