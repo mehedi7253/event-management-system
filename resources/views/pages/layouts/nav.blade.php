@@ -13,10 +13,13 @@
                 <a class="nav-link" href="{{ route('pages.package.index') }}">Packages</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#about">Event</a>
+                <a class="nav-link" href="{{ route('pages-events.index') }}">Event</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#contact">Contact</a>
+                <a class="nav-link" href="{{ route('stake-holders.index') }}">Stake Holders</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact Us</a>
             </li>
             <li class="nav-item dropdown">
                 @if (Route::has('login'))

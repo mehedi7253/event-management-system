@@ -16,17 +16,17 @@
             @if (session('error'))
              <div class="alert alert-danger">{{ session('error') }}</div>
             @endif
-            <div class="col-md-6 col-sm-12 float-left">
+            <div class="col-md-12 col-sm-12 float-left">
                 @if (session('success'))
                 
                     <form action="{{ route('package.event.update', $orders->id) }}" method="POST">
                         @csrf
                         @method('PUT')
-                        <div class="form-group">
+                        <div class="form-group col-md-6 col-sm-12 float-left">
                             <label>Select Date: <sup class="text-danger">*</sup></label>
                             <input type="date" name="booking_date" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6 col-sm-12 float-left">
                             <label>Select Event: <sup class="text-danger">*</sup></label>
                             <select class="form-control" name="event_location">
                                 <option>---------Select One---------</option>
@@ -35,18 +35,18 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6 col-sm-12 float-left">
                             <button type="submit" class="btn btn-success">Submit</button>
                         </div>
                     </form>
                     @else
                     <form action="{{ route('event.search') }}" method="POST" role="search">
                         @csrf
-                        <div class="form-group">
+                        <div class="form-group col-md-6 col-sm-12 float-left">
                             <label>Select Date: <sup class="text-danger">*</sup></label>
                             <input type="date" name="booking_date" class="form-control">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6 col-sm-12 float-left">
                             <label>Select Event: <sup class="text-danger">*</sup></label>
                             <select class="form-control" name="event_location">
                                 <option>---------Select One---------</option>
@@ -55,8 +55,8 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group">
-                            <button type="submit" id="search" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+                        <div class="form-group col-md-6 col-sm-12 float-left">
+                            <button type="submit" id="search" class="btn btn-primary"> Check Avialable Date</button>
                         </div>
                     </form>
                 @endif

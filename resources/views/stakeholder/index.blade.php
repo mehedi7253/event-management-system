@@ -21,7 +21,7 @@
         </div> 
        <div class="card-body">
         <div class="col-md-5 col-sm-12 float-left">
-            <img src="{{ asset('user/images/'.Auth::user()->image) }}" style="height: 200px; width: 100%">
+            <img src="{{ asset('user/images/'.Auth::user()->image) }}" style="height: 245px; width: 100%">
         </div>
         <div class="col-md-7 col-sm-12 float-left">
             <table class="table-bordered table">

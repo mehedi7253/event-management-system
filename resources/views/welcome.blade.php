@@ -26,7 +26,10 @@
                         <a class="nav-link" href="{{ route('pages.package.index') }}">Packages</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">Event</a>
+                        <a class="nav-link" href="{{ route('pages-events.index') }}">Event</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('stake-holders.index') }}">Stake Holders</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
@@ -61,6 +64,16 @@
                 </ul>
             </div>
         </nav>
+    </section>
+
+    <section class="banner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 mx-auto" style="margin-top: 23%">
+                    <h1 class="text-center text-white">Event Management System</h1>
+                </div>
+            </div>
+        </div>
     </section>
 
     <script src="{{ asset('assets/template/js/jquery-3.6.0.min.js') }}"></script>

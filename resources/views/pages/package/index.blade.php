@@ -9,6 +9,15 @@
                     <img src="{{ asset('package/images/'.$packages->image) }}" class="card-img-top" style="height: 200px; width: 100%">
                     <div class="card-body">
                         <h3 class="text-capitalize text-center">{{ $packages->package_name }}<sup class="text-success"> Available</sup></h3>
+                        <p class="text-center font-weight-bold">
+                            @php
+                                $ratings = DB::select(DB::raw("SELECT ROUND(AVG(status),1) as averageRating FROM ratings WHERE package_id = $packages->id"))
+                            @endphp
+                            Avarage
+                            @foreach ($ratings as $rating)
+                                 {{ $rating->averageRating }} 
+                            @endforeach Rating
+                        </p>
                     </div>
                     <div class="card-footer">
                         <a href="{{ route('pages.package.show', ['name'=>$packages->package_name])}}" class="btn btn-info float-right">View More</a>

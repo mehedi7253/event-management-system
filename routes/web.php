@@ -16,6 +16,8 @@ use App\Http\Controllers\Page\EventcheckController;
 use App\Http\Controllers\Page\FinalorderController;
 use App\Http\Controllers\Page\OrderController;
 use App\Http\Controllers\Page\PagePackageController;
+use App\Http\Controllers\Page\PageeventController;
+use App\Http\Controllers\Page\StakeHoldersController;
 use App\Http\Controllers\Stack\PaymentController;
 use App\Http\Controllers\stack\StackchatController;
 use App\Http\Controllers\User\UserController;
@@ -100,7 +102,7 @@ Route::post('package/AddToCart', [PagePackageController::class, 'AddToCart'])->n
 Route::POST('/package/event', [EventcheckController::class, 'search'])->name('event.search');
 Route::PUT('/package/update/{id}', [EventcheckController::class, 'update'])->name('package.event.update');
 Route::resource('finalorders', FinalorderController::class);
-
-
+Route::resource('pages-events', PageeventController::class);
+Route::resource('stake-holders', StakeHoldersController::class);
 // order
 Route::resource('orders', OrderController::class);

@@ -35,6 +35,7 @@ class PagePackageController extends Controller
      $ratings = DB::table('ratings')
             ->join('users','users.id','=','ratings.user_id')
             ->where('ratings.package_id','=', $package_id)
+            ->select('users.name as UserName','users.image', 'ratings.status as Rting','ratings.description')
             ->get();   
        return view('pages.package.show', compact('package', 'main_menu','ratings'));
     }

@@ -49,9 +49,9 @@
                 @foreach ($ratings as $rating)
                     <div class="form-group input-group" style="border: 1px solid silver; padding:10px">
                         <div class="input-group-prepend">
-                            <img src="{{ asset('user/images/'.$rating->image) }}" style="height: 30px; width: 30px; border-radius: 50%;"> <span class="ml-2">{{ $rating->name }} Give {{ $rating->status }} <i class="fa fa-star" style="color: yellow"></i></Give>
+                            <img src="{{ asset('user/images/'.$rating->image) }}" style="height: 30px; width: 30px; border-radius: 50%;"> <span class="ml-2 text-info text-capitalize">{{ $rating->UserName }} <span class="text-dark">Give {{ $rating->Rting }} </span> <i class="fa fa-star" style="color: black"></i></span>
                         </div>
-                        <textarea class="font-weight-bold form-control" disabled style="height: 120px; border-radius: 16px; margin-left: -100px; margin-top: 32px"><?php echo $rating->description ?></textarea>
+                        <p class="font-weight-bold form-control" disabled style="height: auto; border-radius: 16px; margin-left: -100px; margin-top: 32px"><?php echo $rating->description ?></textarea>
                     </div>
                 @endforeach
             </div>

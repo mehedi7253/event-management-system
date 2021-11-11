@@ -59,9 +59,9 @@
                             @endphp
                               @if($order->process == '3')
                                 @if($order->rating_status == '0')
-                                  @foreach ($package as $packages)
-                                    <a class="btn btn-info" href="{{ route('rating.edit',$packages->package_id)  }}">Review Now</a>
-                                  @endforeach
+                                  {{-- @foreach ($package as $packages) --}}
+                                    <a class="btn btn-info" href="{{ route('rating.edit',$order->id)  }}">Review Now</a>
+                                  {{-- @endforeach --}}
                                 @else
                                   <label class="text-success">Rating Done</label>
                                 @endif
