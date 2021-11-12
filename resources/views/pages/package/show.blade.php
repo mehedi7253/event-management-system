@@ -7,9 +7,9 @@
                     <h3 class="text-capitalize">{{ $packages->package_name }} Package <span class="float-right"> {{ $ratings->count() }} People Rate It</span></h3>
                 </div>
                 <div class="card-body">
-                    <div class="col-md-4 col-sm-12 float-left border-right">
+                    {{-- <div class="col-md-4 col-sm-12 float-left border-right">
                         <img src="{{ asset('package/images/'.$packages->image) }}" style="height: 300px; width: 100%" class="img-thumbnail">
-                    </div>
+                    </div> --}}
                     @foreach($main_menu as $main_menus)
                         <div class="col-md-4 col-sm-12 float-left mb-2">
                             <div class="card">

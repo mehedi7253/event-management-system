@@ -33,7 +33,11 @@
                      <th>Email</th>
                      <td>{{ $profile->email }}</td>
                  </tr>
-               
+                 <tr>
+                    <th>Phone</th>
+                    <td>{{ $profile->phone }}</td>
+                </tr>
+              
                  <tr>
                      <th>Address</th>
                      <td>
