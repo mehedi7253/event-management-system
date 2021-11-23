@@ -30,7 +30,9 @@ class NewOrderController extends Controller
      */
     public function create()
     {
-        //
+        $page_name = "Complete Order List";
+        $orders = orders::all()->where('process','=','3');
+        return view('admin.orders.complete', compact('page_name','orders'));
     }
 
     /**

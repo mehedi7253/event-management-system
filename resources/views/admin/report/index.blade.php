@@ -58,7 +58,7 @@
                                 <td>{{ number_format($order->amount,2) }}</td>
                                 <td>{{ date('m-d-Y', strtotime($order->created_at)) }}</td>   
                                 <td>
-                                    <a class="btn btn-info" href=""><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('neworders.show', $order->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
                                 </td>                      
                             </tr>
                         @endforeach

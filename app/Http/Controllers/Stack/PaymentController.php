@@ -19,10 +19,10 @@ class PaymentController extends Controller
     {
         $page_name = "My Payment List";
         $orders  = DB::table('assignstackholders')
-        ->join('orders','orders.id','=', 'assignstackholders.order_id')
-        ->where('assignstackholders.stackholder_id', '=', Auth::user()->id)
-        ->select('orders.id as orderID','orders.invoice_number','orders.created_at','orders.amount','assignstackholders.comission', 'assignstackholders.id as AssignID', 'assignstackholders.given_amount')
-        ->get();
+            ->join('orders','orders.id','=', 'assignstackholders.order_id')
+            ->where('assignstackholders.stackholder_id', '=', Auth::user()->id)
+            ->select('orders.id as orderID','orders.invoice_number','orders.created_at','orders.amount','assignstackholders.comission', 'assignstackholders.id as AssignID', 'assignstackholders.given_amount')
+            ->get();
 
         $total = DB::table('assignstackholders')->where('stackholder_id','=',Auth::user()->id)->sum('given_amount');
         

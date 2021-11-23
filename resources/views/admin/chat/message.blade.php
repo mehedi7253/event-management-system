@@ -22,7 +22,7 @@
        <div class="card-body" style="margin: 5px; padding: 5px; height: 700px; overflow: auto;">
         
         @foreach ($msgs as $msg)
-            @if($msg->rechiver_id == Auth::user()->id)
+            @if($msg->sender_id == $users->id)
                 <div class="form-group input-group">
                     <div class="input-group-prepend">
                         <img src="{{ asset('user/images/'.$users->image) }}" style="height: 50px; width: 50px; border-radius: 50%;">

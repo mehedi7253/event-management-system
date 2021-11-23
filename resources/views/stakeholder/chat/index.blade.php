@@ -30,7 +30,7 @@
                     <textarea class="font-weight-bold form-control" disabled style="height: 56px; border-radius: 16px; margin-left: 8px; margin-top: 10px"> {{ $msg->message }}</textarea>
                 </div>
                 <p class="text-dark float-right" style="font-size: 9px">{{ $msg->created_at }}</p>
-             @elseif($msg->sender_id == '1')
+            @elseif($msg->rechiver_id ==  Auth::user()->id)
                 <div class="form-group input-group">
                     <textarea class="font-weight-bold form-control" disabled style="height: 56px; border-radius: 16px; margin-left: 8px; margin-top: 10px">{{ $msg->message }}</textarea>
                     <div class="input-group-prepend">

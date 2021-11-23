@@ -21,7 +21,7 @@ class ViewOrderController extends Controller
         $order_list = DB::table('assignstackholders')
                 ->join('orders','orders.id', '=', 'assignstackholders.order_id')
                 ->where('assignstackholders.stackholder_id', '=', Auth::user()->id)
-                ->where('assignstackholders.process','=', '0')
+                // ->where('assignstackholders.process','=', '0')
                 ->get();
 
         return view('stakeholder.orders.index',compact('page_name','order_list'));
@@ -34,7 +34,14 @@ class ViewOrderController extends Controller
      */
     public function create()
     {
-        //
+        $page_name = "Complete Order List";
+        $order_list = DB::table('assignstackholders')
+                ->join('orders','orders.id', '=', 'assignstackholders.order_id')
+                ->where('assignstackholders.stackholder_id', '=', Auth::user()->id)
+                ->where('orders.process','=','3')
+                ->get();
+
+        return view('stakeholder.orders.complete',compact('page_name','order_list'));
     }
 
     /**

@@ -35,47 +35,50 @@
               </thead>
               <tbody>
                   @foreach ($orders as $i=>$order)
-                      <tr>
-                          <td>{{ ++$i }}</td>
-                          <td>{{ $order->name }}</td>
-                          <td>{{ $order->phone }}</td>
-                          <td>{{ $order->invoice_number }}</td>
-                          <td>
-                              @if($order->process == '0')
-                                  <label class="text-danger">Pending</label>
-                                @elseif($order->process == '1')
-                                  <label class="text-info">Rechived</label>
-                                @elseif($order->process == '2')
-                                  <label class="text-info">Assigned</label>
-                                @elseif($order->process == '3')
-                                  <label class="text-success">Complete</label>
-                                @else
-                                 <label class="text-danger">Failed</label>
-                              @endif
-                          </td>
-                         <td>
-                            <form action="{{ route('neworders.update', $order->id) }}" method="POST">
-                                @csrf
-                                @method('PUT')
-                                <div class="form-group input-group">
-                                    <select class="form-control" name="process">
-                                        <option>---Select One---</option>
-                                        <option value="1">Received</option>
-                                        <option value="3">Delivered</option>
-                                    </select>
-                                    <input type="submit" name="btn" class="btn btn-info" value="Update">
-                                </div>
-                            </form>
-                         </td>
-                          <td>
-                              @if($order->process == '1')
-                                 <a href="{{ route('assignstakeholders.edit', $order->id) }}" class="btn btn-info"><i class="fa fa-plus"></i></a>
-                                @elseif ($order->process == '2')
-                                <a class="btn btn-info"><i class="fa fa-plus"></i></a>
-                              @endif
-                              <a href="{{ route('neworders.show', $order->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
-                          </td>
-                      </tr>
+                  @if($order->process < '3')
+                    <tr>
+                        <td>{{ ++$i }}</td>
+                        <td>{{ $order->name }}</td>
+                        <td>{{ $order->phone }}</td>
+                        <td>{{ $order->invoice_number }}</td>
+                        <td>
+                            @if($order->process == '0')
+                                <label class="text-danger">Pending</label>
+                            @elseif($order->process == '1')
+                                <label class="text-info">Rechived</label>
+                            @elseif($order->process == '2')
+                                <label class="text-info">Assigned</label>
+                            @elseif($order->process == '3')
+                                <label class="text-success">Complete</label>
+                            @else
+                            <label class="text-danger">Failed</label>
+                            @endif
+                        </td>
+                    <td>
+                        <form action="{{ route('neworders.update', $order->id) }}" method="POST">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group input-group">
+                                <select class="form-control" name="process">
+                                    <option>---Select One---</option>
+                                    <option value="1">Received</option>
+                                    <option value="3">Delivered</option>
+                                </select>
+                                <input type="submit" name="btn" class="btn btn-info" value="Update">
+                            </div>
+                        </form>
+                    </td>
+                        <td>
+                            @if($order->process == '1')
+                            <a href="{{ route('assignstakeholders.edit', $order->id) }}" class="btn btn-info"><i class="fa fa-plus"></i></a>
+                            @elseif ($order->process == '2')
+                            <a class="btn btn-info"><i class="fa fa-plus"></i></a>
+                            @endif
+                            <a href="{{ route('neworders.show', $order->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
+                        </td>
+                    </tr>
+                  @endif
+                    
                   @endforeach
               </tbody>
             </table>

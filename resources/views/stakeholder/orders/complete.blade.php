@@ -29,7 +29,6 @@
                   </thead>
                   <tbody>
                       @foreach ($order_list as $i=>$order)
-                      @if($order->process < '3')
                           <tr>
                               <td>{{ ++$i }}</td>
                               <td>{{ $order->name }}</td>
@@ -51,7 +50,6 @@
                                 <a href="{{ route('new-orders.show', $order->id) }}" class="btn btn-info"><i class="fa fa-eye"></i></a>
                               </td>
                           </tr>
-                          @endif
                       @endforeach
                   </tbody>
                 </table>

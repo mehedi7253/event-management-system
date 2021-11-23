@@ -2,7 +2,7 @@
     <div class="container my-auto">
       <div class="copyright text-center my-auto">
         <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script> - developed by
-          <b> your Name</b>
+          <b> k.m mujaddid alfe sani</b>
         </span>
       </div>
     </div>

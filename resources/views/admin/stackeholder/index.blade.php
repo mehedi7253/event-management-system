@@ -17,7 +17,7 @@
     </h6>
     <div class="card">
         <div class="card-header">
-            <h6>{{ $page_name }} <a href="{{ route('categorys.index') }}" class="float-right btn btn-info">Manage Category</a></h6>
+            <h6>{{ $page_name }} <a href="{{ route('admin-stackholder.create') }}" class="float-right btn btn-info">Add StakeHolder</a></h6>
         </div> 
        <div class="card-body">
         <div class="table-responsive p-3">

@@ -26,7 +26,7 @@ class StakholderPaymentController extends Controller
                 ->groupBy('assignstackholders.stackholder_id')
                 ->get();
         
-    return view('admin.payment.index', compact('page_name','orders'));
+        return view('admin.payment.index', compact('page_name','orders'));
     }
 
     /**
@@ -63,8 +63,10 @@ class StakholderPaymentController extends Controller
                 ->join('users','users.id','=','assignstackholders.stackholder_id')
                 ->join('orders','orders.id','=', 'assignstackholders.order_id')
                 ->select('orders.id as orderID','orders.invoice_number','orders.created_at','orders.amount','assignstackholders.comission', 'assignstackholders.id as AssignID', 'assignstackholders.given_amount')
+                ->where('assignstackholders.stackholder_id','=',$id)
                 ->get();
        
+        //  return $orders;
 
         return view('admin.payment.show', compact('page_name','orders'));
     }

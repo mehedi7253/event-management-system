@@ -58,6 +58,7 @@
       <div id="collapseBootstrap3" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{ route('neworders.index') }}">New Orders</a>
+          <a class="collapse-item" href="{{ route('neworders.create') }}">Complete Orders</a>
         </div>
       </div>
     </li>

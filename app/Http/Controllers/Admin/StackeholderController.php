@@ -38,11 +38,12 @@ class StackeholderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name'     => ['required', 'string', 'max:255','regex:/^[a-zA-Z-.\s]+$/'],
-            'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'name'     => ['required', 'string', 'max:255','regex:/^[a-zA-Z-.\s]+$/'], 
+            'email'    => ['required', 'string', 'email', 'max:255', 'regex:/(.*)@stakeholder\.com/i', 'unique:users'],
             'phone'    => ['required', 'string', 'min:11', 'max:11','regex:/^[-0-9\+]+$/'],
             'gender'   => ['string', 'max:255'],
             'address'  => ['required', 'string', 'max:255'],
@@ -52,6 +53,7 @@ class StackeholderController extends Controller
             'name.regex'         => "Please Enter Only Character Value",
             'email.required'     => "Please Enter Email Address",
             'email.unique'       => "This Email Already Registered",
+            'email.regex'        => "Enter Valid Email Address..(@stakeholder.com)",
             'phone.required'     => "please Enter Phone Number",
             'phone.min'          => "Phone Number Must Be 11 Digit",
             'phone.max'          => "Phone Number Must Be 11 Digit",

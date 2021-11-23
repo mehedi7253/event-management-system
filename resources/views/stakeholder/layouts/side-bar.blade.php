@@ -42,7 +42,7 @@
       <div id="collapseBootstrap5" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
           <a class="collapse-item" href="{{ route('new-orders.index') }}">New Order</a>
-          {{-- <a class="collapse-item" href="{{ route('new-orders.index') }}">Old Order</a> --}}
+          <a class="collapse-item" href="{{ route('new-orders.create') }}">Complete Order</a>
         </div>
       </div>
     </li>
