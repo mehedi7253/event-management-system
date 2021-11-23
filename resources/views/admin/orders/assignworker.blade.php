@@ -49,7 +49,7 @@
                  </div>
             </form>
            </div>
-           <div class="col-md-4 col-sm-12 float-left">
+           {{-- <div class="col-md-4 col-sm-12 float-left">
              <h3>Avilable Stakeholder</h3>
              <hr/>
              @if($order->process == '0')
@@ -61,7 +61,7 @@
                   <li> {{ $deactives->name }} <i class="fa fa-circle text-danger" style="font-size: 10px"></i></li>
                 @endforeach
              @endif
-           </div> 
+           </div>  --}}
        </div>
     </div>
 @endsection
